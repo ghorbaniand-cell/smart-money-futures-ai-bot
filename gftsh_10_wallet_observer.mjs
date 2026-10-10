@@ -20,7 +20,8 @@ import path from 'node:path';
  *   GitHub Actions cron: every 5–10 minutes
  */
 
-const VERSION = 'GFTSH-10W-LIVE-OBSERVER-V2.3.3-ALERT-STATE-REARM';
+const VERSION = 'GFTSH-10W-LIVE-OBSERVER-V2.4.0-NEW-ENTRY-PLUS-1PCT-BAND';
+const ENTRY_BAND_PCT = Math.max(0.01, Number(process.env.GFTSH_ENTRY_BAND_PCT || 1.0));
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
@@ -391,25 +392,25 @@ function formatAlert(a) {
   const icon = a.side === 'LONG' ? '🟢' : '🔴';
   const levels = modelLevels(a.side, a.entry);
   return [
-    '🐋 SMART MONEY — OPEN POSITION IN ENTRY BAND',
+    a.eventType === 'NEW_ENTRY' ? '🐋 SMART MONEY — NEW POSITION ENTRY' : '🐋 SMART MONEY — OPEN POSITION NEAR ENTRY',
     '━━━━━━━━━━━━━━━━━━',
     `👤 ${a.trader}`,
     `🔗 ${short(a.address)}`,
     '',
     `${icon} ${a.side} ${a.coin}`,
-    '🔔 Event: OPEN POSITION WITHIN ENTRY BAND',
+    a.eventType === 'NEW_ENTRY' ? '🆕 Event: NEW POSITION OPENED' : `🔔 Event: OPEN POSITION WITHIN ${ENTRY_BAND_PCT.toFixed(2)}% ENTRY BAND`,
     `⚡ Leverage: ${fmtLev(a.leverage)}`,
-    `📍 Average Entry: ${fmtPx(a.entry)}`,
+    `${a.eventType === 'NEW_ENTRY' ? '📍 Fill Entry' : '📍 Average Entry'}: ${fmtPx(a.entry)}`,
     `💵 Current Mark: ${fmtPx(a.current)}`,
     `📏 Entry Distance: ${fmtPct(a.distancePct)}`,
     '',
     `🎯 Model TP: ${fmtPx(levels.tp)}`,
     `🛑 Model SL: ${fmtPx(levels.sl)}`,
     `💰 Position Notional: $${a.notional.toLocaleString('en-US', { maximumFractionDigits: 2 })}`,
-    `🕒 Opening fill: ${a.fillTime ? new Date(a.fillTime).toISOString() : 'recent'}`,
+    `🕒 Entry/fill time: ${a.fillTime ? new Date(a.fillTime).toISOString() : 'recent'}`,
     '',
-    '🔒 Averaging/add fills are ignored',
-    '📐 Alert when mark is within 0.50% of current average entry',
+    a.eventType === 'NEW_ENTRY' ? '🧾 New-position fill detected from recent trade history' : '📐 Alert when mark is near current average entry',
+    '🔒 Same-side averaging/add fills do not create new-entry alerts',
     '🛡 READ-ONLY | NO ORDERS | NO AUTO-COPY'
   ].join('\n');
 }
@@ -466,14 +467,15 @@ async function main() {
   console.log(`\n${VERSION}`);
   console.log('READ-ONLY | NO ORDERS | NO AUTO-COPY | FUTURES ONLY');
   console.log(`Watching ${WALLETS.length} fixed wallets every ${SCAN_INTERVAL_MIN} minutes.`);
-  console.log('Signal rule: alert each currently open position once when mark-entry distance < 0.50%; averaging does not create duplicate alerts.');
+  console.log(`Signal rules: new-position fills alert once per fill; current open positions alert once per lifecycle within ${ENTRY_BAND_PCT.toFixed(2)}%; averaging does not create new-entry alerts.`);
 
   const state = await readJson(STATE_FILE, {
     version: VERSION,
     initialized: false,
     lastScanAt: 0,
     wallets: {},
-    alertedOpenPositionKeys: []
+    alertedOpenPositionKeys: [],
+    alertedNewEntryFillKeys: []
   });
 
   // Repair older/incomplete persisted state before any wallet is processed.
@@ -489,6 +491,7 @@ async function main() {
   if (!Array.isArray(state.alertedOpenPositionKeys)) {
     state.alertedOpenPositionKeys = [];
   }
+  if (!Array.isArray(state.alertedNewEntryFillKeys)) state.alertedNewEntryFillKeys = [];
 
   // One-time migration: older releases could persist dedupe keys without proving
   // Telegram delivery. Rearm once so any currently in-band positions can alert.
@@ -512,10 +515,14 @@ async function main() {
   const startTime = Math.max(0, now - LOOKBACK_MIN * 60_000);
   const mids = await fetchMids();
   const alertedOpenPositionKeys = new Set((state.alertedOpenPositionKeys || []).map(String));
+  const alertedNewEntryFillKeys = new Set((state.alertedNewEntryFillKeys || []).map(String));
   const alerts = [];
+  const newEntryAlerts = [];
   let errors = 0;
   let walletsSucceeded = 0;
   let positionsChecked = 0;
+  let newPositionFillsDetected = 0;
+  let newEntryAlertsSent = 0;
   let averagingFillsIgnored = 0;
   let outsideEntryBand = 0;
   let belowMinimumNotional = 0;
@@ -534,16 +541,41 @@ async function main() {
       const positions = extractPositions(currentState);
       const fillsSorted = fills.slice().sort((a, b) => num(a.time) - num(b.time));
 
-      // Keep averaging/add fills diagnostic-only; they do not create a separate alert.
+      // Path 1: detect genuinely new position entries from recent fills.
+      // Flat -> non-flat and position flips qualify; same-side adds/averages do not.
       for (const fill of fillsSorted) {
         const before = num(fill?.startPosition);
         const after = postPositionFromFill(fill);
         if (Math.abs(before) > 1e-12 && Math.abs(after) > Math.abs(before) && Math.sign(before) === Math.sign(after)) {
           averagingFillsIgnored++;
         }
+        if (!isNewPositionFill(fill)) continue;
+        const fillTime = num(fill?.time);
+        if (!(fillTime >= startTime && fillTime <= now)) continue;
+        const coin = String(fill?.coin || '');
+        const side = sideFromFill(fill);
+        const entry = num(fill?.px);
+        const fillNotional = notional(fill);
+        if (!coin || !(entry > 0) || fillNotional < MIN_ALERT_NOTIONAL) continue;
+        newPositionFillsDetected++;
+        const rawKey = fillKey(fill);
+        const key = `${address}|${rawKey}`;
+        if (alertedNewEntryFillKeys.has(key)) continue;
+        const mark = num(mids?.[coin]);
+        const livePosition = findPosition(positions, coin, side);
+        newEntryAlerts.push({
+          eventType: 'NEW_ENTRY', trader, address, coin, side, entry,
+          current: mark > 0 ? mark : entry,
+          distancePct: mark > 0 ? Math.abs((mark - entry) / entry) * 100 : 0,
+          leverage: num(livePosition?.leverage),
+          notional: fillNotional,
+          positionSize: Math.abs(num(fill?.sz)),
+          fillTime,
+          fillKey: key
+        });
       }
 
-      // Alert on ANY currently open position that is within the strict 0.50% band,
+      // Path 2: alert on ANY currently open position within the configured entry band,
       // including positions opened before this scan window. Stable wallet/coin/side
       // keys prevent repeated alerts every 10 minutes and ignore same-side averaging.
       const currentKeys = new Set();
@@ -561,7 +593,7 @@ async function main() {
           continue;
         }
         const distancePct = Math.abs((mark - entry) / entry) * 100;
-        if (!(distancePct < 0.5)) {
+        if (!(distancePct < ENTRY_BAND_PCT)) {
           outsideEntryBand++;
           continue;
         }
@@ -578,7 +610,7 @@ async function main() {
         }
 
         alerts.push({
-          trader, address, coin, side, entry, current: mark,
+          eventType: 'ENTRY_BAND', trader, address, coin, side, entry, current: mark,
           leverage: num(position.leverage), distancePct,
           notional: num(position.positionValue),
           positionSize: Math.abs(num(position.szi)),
@@ -625,6 +657,7 @@ async function main() {
     fillTime: a.fillTime
   }));
   state.alertedOpenPositionKeys = [...alertedOpenPositionKeys].slice(-5000);
+  state.alertedNewEntryFillKeys = [...alertedNewEntryFillKeys].slice(-10000);
   await writeJson(STATE_FILE, state);
 
   const tgState = await readJson(TG_STATE_FILE, {
@@ -636,6 +669,24 @@ async function main() {
     await sendStartupStatus(state);
     tgState.initialized = true;
     tgState.lastStartupAt = now;
+  }
+
+  for (const alert of newEntryAlerts) {
+    try {
+      const delivery = await sendTelegram(formatAlert(alert));
+      if (!delivery?.sent) {
+        alertSendErrors++;
+        console.error(`[TELEGRAM][NEW-ENTRY-NOT-SENT] ${alert.trader} ${alert.side} ${alert.coin}: ${delivery?.reason || 'unknown reason'}; will retry next cycle.`);
+        continue;
+      }
+      alertedNewEntryFillKeys.add(alert.fillKey);
+      newEntryAlertsSent++;
+      state.alertedNewEntryFillKeys = [...alertedNewEntryFillKeys].slice(-10000);
+      await writeJson(STATE_FILE, state);
+    } catch (e) {
+      alertSendErrors++;
+      console.error(`[TELEGRAM][NEW-ENTRY-SEND-ERROR] ${alert.trader} ${alert.side} ${alert.coin}: ${e?.message || e}; will retry next cycle.`);
+    }
   }
 
   for (const alert of alerts) {
@@ -668,28 +719,31 @@ async function main() {
     `🔔 Open-position alerts sent: ${alertsSent}`,
     `🔁 Already alerted in current lifecycle: ${alreadyAlertedInBand}`,
     `⚠️ Alert delivery errors: ${alertSendErrors}`, 
-    `🎯 Open positions inside 0.50% band: ${inBandOpenPositions}`,
+    `🎯 Open positions inside ${ENTRY_BAND_PCT.toFixed(2)}% band: ${inBandOpenPositions}`,
+    `🆕 Recent new-position fills detected: ${newPositionFillsDetected}`,
+    `📨 New-entry alerts sent: ${newEntryAlertsSent}`, 
     `📊 Open positions checked: ${positionsChecked}`,
     `🔄 Averaging/add fills ignored: ${averagingFillsIgnored}`,
-    `📏 Open positions outside 0.50% entry band: ${outsideEntryBand}`,
+    `📏 Open positions outside ${ENTRY_BAND_PCT.toFixed(2)}% entry band: ${outsideEntryBand}`, 
     `⏭ Below minimum notional: ${belowMinimumNotional}`,
     `❌ Wallet/API errors: ${errors}`,
     '',
     `🕐 Cycle: ${new Date(now).toISOString()}`,
     `⚙️ Runtime: ${cycleRuntimeSec}s`,
     '',
-    'Signal rule: any open position within 0.50% of entry; one alert per open lifecycle, no averaging duplicates.',
+    `Signal rules: new-position fills alert once per fill; current open positions alert once per lifecycle within ${ENTRY_BAND_PCT.toFixed(2)}% of average entry. Same-side averaging does not create new-entry alerts.`,
     '🛡 READ-ONLY | NO ORDERS | NO AUTO-COPY'
   ].join('\n');
   await sendTelegram(cycleText);
 
   tgState.lastCycleAt = now;
-  tgState.lastCycleAlerts = alertsSent;
+  tgState.lastCycleAlerts = alertsSent + newEntryAlertsSent;
+  tgState.lastCycleNewEntryAlerts = newEntryAlertsSent;
   tgState.lastCycleAlertSendErrors = alertSendErrors;
   tgState.lastCycleErrors = errors;
   await writeJson(TG_STATE_FILE, tgState);
 
-  console.log(`[CYCLE] wallets=${walletsSucceeded}/${WALLETS.length} positions=${positionsChecked} inBandOpenPositions=${inBandOpenPositions} openPositionAlerts=${alertsSent} alreadyAlerted=${alreadyAlertedInBand} alertSendErrors=${alertSendErrors} averagingIgnored=${averagingFillsIgnored} outsideBand=${outsideEntryBand} errors=${errors} runtime=${cycleRuntimeSec}s`);
+  console.log(`[CYCLE] wallets=${walletsSucceeded}/${WALLETS.length} positions=${positionsChecked} entryBand=${ENTRY_BAND_PCT}% inBandOpenPositions=${inBandOpenPositions} openPositionAlerts=${alertsSent} newPositionFills=${newPositionFillsDetected} newEntryAlerts=${newEntryAlertsSent} alreadyAlerted=${alreadyAlertedInBand} alertSendErrors=${alertSendErrors} averagingIgnored=${averagingFillsIgnored} outsideBand=${outsideEntryBand} errors=${errors} runtime=${cycleRuntimeSec}s`);
 }
 
 main().catch(e => {
