@@ -407,7 +407,7 @@ function formatAlert(a) {
     `🎯 Model TP: ${fmtPx(levels.tp)}`,
     `🛑 Model SL: ${fmtPx(levels.sl)}`,
     `💰 Position Notional: $${a.notional.toLocaleString('en-US', { maximumFractionDigits: 2 })}`,
-    `🕒 Entry/fill time: ${a.fillTime ? new Date(a.fillTime).toISOString() : 'recent'}`,
+    `${a.eventType === 'NEW_ENTRY' ? '🕒 Fill time' : '🕒 Detected at'}: ${a.fillTime ? new Date(a.fillTime).toISOString() : 'recent'}`,
     '',
     a.eventType === 'NEW_ENTRY' ? '🧾 New-position fill detected from recent trade history' : '📐 Alert when mark is near current average entry',
     '🔒 Same-side averaging/add fills do not create new-entry alerts',
@@ -493,14 +493,16 @@ async function main() {
   }
   if (!Array.isArray(state.alertedNewEntryFillKeys)) state.alertedNewEntryFillKeys = [];
 
-  // One-time migration: older releases could persist dedupe keys without proving
-  // Telegram delivery. Rearm once so any currently in-band positions can alert.
-  // Thereafter, state.alertStateVersion prevents repeated alerts every cycle.
-  if (state.alertStateVersion !== 1) {
+  // One-time migration V2: the previous migration marker (version 1) may
+  // already have been persisted even though the user did not receive usable
+  // detailed alerts. Re-arm open-position alerts once so current in-band
+  // positions are retried. Thereafter, keys are added ONLY after Telegram
+  // confirms delivery, preventing repeated alerts on every cycle.
+  if (state.alertStateVersion !== 2) {
     const oldKeyCount = state.alertedOpenPositionKeys.length;
     state.alertedOpenPositionKeys = [];
-    state.alertStateVersion = 1;
-    console.log(`[ALERT-STATE-MIGRATION] Rearmed alerts once; cleared ${oldKeyCount} legacy dedupe key(s). Current in-band positions may alert now.`);
+    state.alertStateVersion = 2;
+    console.log(`[ALERT-STATE-MIGRATION-V2] Re-armed open-position alerts once; cleared ${oldKeyCount} persisted dedupe key(s). Current in-band positions will be queued for a detailed alert.`);
   }
 
   // Suppress only near-simultaneous duplicate invocations; never block a valid 5–10m scan.
@@ -716,12 +718,14 @@ async function main() {
     `👥 Wallets checked successfully: ${walletsSucceeded}/${WALLETS.length}`, 
     `⏱ Scan interval: ${SCAN_INTERVAL_MIN} minutes`,
     '',
-    `🔔 Open-position alerts sent: ${alertsSent}`,
-    `🔁 Already alerted in current lifecycle: ${alreadyAlertedInBand}`,
-    `⚠️ Alert delivery errors: ${alertSendErrors}`, 
     `🎯 Open positions inside ${ENTRY_BAND_PCT.toFixed(2)}% band: ${inBandOpenPositions}`,
+    `📥 Detailed open-position alerts queued: ${alerts.length}`,
+    `🔔 Open-position alerts sent: ${alertsSent}`,
+    `🔁 Skipped as already alerted: ${alreadyAlertedInBand}`,
     `🆕 Recent new-position fills detected: ${newPositionFillsDetected}`,
-    `📨 New-entry alerts sent: ${newEntryAlertsSent}`, 
+    `📥 New-entry alerts queued: ${newEntryAlerts.length}`,
+    `📨 New-entry alerts sent: ${newEntryAlertsSent}`,
+    `⚠️ Alert delivery errors: ${alertSendErrors}`,
     `📊 Open positions checked: ${positionsChecked}`,
     `🔄 Averaging/add fills ignored: ${averagingFillsIgnored}`,
     `📏 Open positions outside ${ENTRY_BAND_PCT.toFixed(2)}% entry band: ${outsideEntryBand}`, 
