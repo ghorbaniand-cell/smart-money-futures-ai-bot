@@ -1,4 +1,4 @@
-GFTSH 30 Wallet Observer — V3.1.0
+GFTSH 30 Wallet Observer — V3.2.0
 
 Included:
 - gftsh_10_wallet_observer.mjs (filename intentionally retained)
@@ -14,7 +14,7 @@ Behavior:
 - Existing-position alert keys and new-fill keys are persisted between scheduled runs.
 
 Wallet selection caveat:
-Retained exactly at their previous numbered slots: #5, #7, #8, #11, #13, #15, #16, #17, #19, #21, and #30. The other 19 slots were replaced using public Hyperliquid trader analytics/leaderboards, prioritizing substantial trade history, reported win rate, and positive historical PnL where visible. These are candidates for observation, not guaranteed profitable traders or copy recommendations. Metrics may be incomplete, methodology-dependent, or change over time; exceptionally high win rates can also reflect small recent round-trip samples.
+Ordered exactly as requested: former #13, #15, #17, #19, #21 are now slots #1–#5 and marked with ⭐ in Telegram alerts. Former #2, #5, #7, #8, #10, #11, #12, #16, #18, #24, #30 are now slots #6–#16. The remaining 14 slots (#17–#30) use newly researched public Hyperliquid analytics candidates, prioritizing large round-trip samples, reported win rate, positive historical PnL, and a nonzero perp account when visible. Public snapshots do not prove that every trader is active every single day; metrics can change, and win rate alone does not establish profitability. These are monitoring candidates, not guarantees or copy recommendations.
 
 Deployment:
 1. Replace the existing file at the exact path gftsh_10_wallet_observer.mjs.

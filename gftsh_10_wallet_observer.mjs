@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.1.0-REFINED-WATCHLIST-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.2.0-STARRED-PRIORITY-WATCHLIST-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -38,38 +38,39 @@ const STATE_FILE = process.env.GFTSH_WATCH_STATE_FILE || 'production/state/gftsh
 const TG_STATE_FILE = process.env.GFTSH_WATCH_TELEGRAM_STATE_FILE || 'production/state/gftsh_10_wallet_telegram.json';
 
 const DEFAULT_WALLETS = [
-  // User-requested retained slots: #5, #7, #8, #11, #13, #15, #16, #17, #19, #21, #30.
-  // Other 19 slots replaced with public Hyperliquid analytics candidates; metrics change over time.
-  ['Trader #1', '0x9db82c502472d76742fdd69609dfcc6e01327401'],
-  ['Trader #2', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
-  ['Trader #3', '0xc4cc8ab3934d2b4b08e03018aee1ee295a1917d9'],
-  ['Trader #4', '0x04a97ae7f350a22cd0cdb6b1875e8905b76495aa'],
-  ['Trader #5', '0x736850ee773ac6170fcaeda596514269b863ee56'],
-  ['Trader #6', '0x505f21430e54d4fac9fa456ead8c35cac0b3b70d'],
-  ['Trader #7', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
-  ['Trader #8', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
-  ['Trader #9', '0xfdb03a2574e9e7d1c77d9ed752d99cdf25c3db25'],
+  // User's requested starred priority wallets, in exact order: former #13, #15, #17, #19, #21.
+  ['⭐ Trader #1 ⭐', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
+  ['⭐ Trader #2 ⭐', '0x8efa981f60384083496148b55361a83edc268295'],
+  ['⭐ Trader #3 ⭐', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
+  ['⭐ Trader #4 ⭐', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
+  ['⭐ Trader #5 ⭐', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
+  // Next 11 retained wallets, in exact user-requested order.
+  ['Trader #6', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
+  ['Trader #7', '0x736850ee773ac6170fcaeda596514269b863ee56'],
+  ['Trader #8', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
+  ['Trader #9', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
   ['Trader #10', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
   ['Trader #11', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
   ['Trader #12', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
-  ['Trader #13', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
-  ['Trader #14', '0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11'],
-  ['Trader #15', '0x8efa981f60384083496148b55361a83edc268295'],
-  ['Trader #16', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
-  ['Trader #17', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
-  ['Trader #18', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
-  ['Trader #19', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
-  ['Trader #20', '0x1c814c8068ddd68bcc79bd9d28a1698ba099072d'],
-  ['Trader #21', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
-  ['Trader #22', '0xf4939e64793fc85b68ec4ddb1697b01db3977134'],
-  ['Trader #23', '0x1e5cf44f64a66dae56104ed91bf15f6147200ac1'],
-  ['Trader #24', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
-  ['Trader #25', '0x987163b6b482c30c2f5f3aa2760109668eb0091d'],
-  ['Trader #26', '0x469e9a7f624b04c24f0e64edf8d8a277e6bf58a5'],
-  ['Trader #27', '0xedab6e3998ffddcb354094ffe8ca2a3cff8d3370'],
-  ['Trader #28', '0xfce053a5e461683454bf37ad66d20344c0e3f4c0'],
-  ['Trader #29', '0x089fe537f4b2af55fa990bc64ff4125800bba4f8'],
-  ['Trader #30', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
+  ['Trader #13', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
+  ['Trader #14', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
+  ['Trader #15', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
+  ['Trader #16', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
+  // 14 additional research candidates. Metrics are public analytics snapshots, not guarantees.
+  ['Trader #17', '0x8067cd23db56738d1c08fc6225846d2fd4b05261'],
+  ['Trader #18', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
+  ['Trader #19', '0x9aca58e24ff5845f245e7c2c897fef1bc59b3555'],
+  ['Trader #20', '0x6707013459fa40ab655710bb08690693d539b113'],
+  ['Trader #21', '0xdd854d23fc5af9a152d7aba78153b840bf099d17'],
+  ['Trader #22', '0x69443708e5135532d435b7d1a3b7e6bdc481a800'],
+  ['Trader #23', '0x29754d7a9f9f344327158e2d01508efa415bd558'],
+  ['Trader #24', '0x91c6ed92d018f16ebcf6658aaacb360e110c3f0d'],
+  ['Trader #25', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
+  ['Trader #26', '0xa445a0a15b1d50fa0c4bfe6796d9447e0da5329d'],
+  ['Trader #27', '0xdb42ab87ac1f9f0d6d83dd82ff49137ab70f631d'],
+  ['Trader #28', '0xe31501c472d557bfa145ce105d325fb2dd4cb867'],
+  ['Trader #29', '0x3895d155b005191686476a39580d43258a518e46'],
+  ['Trader #30', '0x30afce2f6842bf183c7e3fe7162e279ff0b6393e'],
 ];
 
 function parseWallets() {
@@ -241,9 +242,10 @@ function formatAlert(a) {
   const tpDistance = slDistance * 2;
   const modelSL = a.side === 'LONG' ? entry - slDistance : entry + slDistance;
   const modelTP = a.side === 'LONG' ? entry + tpDistance : entry - tpDistance;
-  const eventTitle = a.alertType === 'NEW_ENTRY'
+  const priority = String(a.trader || '').includes('⭐') ? '⭐ PRIORITY TRADER ⭐\n' : '';
+  const eventTitle = priority + (a.alertType === 'NEW_ENTRY'
     ? '🐋 SMART MONEY — NEW POSITION OPENED'
-    : '🐋 SMART MONEY — OPEN POSITION NEAR ENTRY';
+    : '🐋 SMART MONEY — OPEN POSITION NEAR ENTRY');
   return [
     eventTitle,
     '━━━━━━━━━━━━━━━━━━',
