@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.3.0-19-RETAINED-11-REPLACEMENTS-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.6.0-ORIGINAL-1-19-PLUS-22-23-PLUS-9-CANDIDATES-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -38,41 +38,39 @@ const STATE_FILE = process.env.GFTSH_WATCH_STATE_FILE || 'production/state/gftsh
 const TG_STATE_FILE = process.env.GFTSH_WATCH_TELEGRAM_STATE_FILE || 'production/state/gftsh_10_wallet_telegram.json';
 
 const DEFAULT_WALLETS = [
-  // User-retained original slots 1–5, all starred.
+  // Priority: original #22 moved to slot #1; original #1–#19 and original #23 retained.
+  ['⭐ PRIORITY TRADER #22 ⭐', '0xe2823659be02e0f48a4660e4da008b5e1abfdf29'],
   ['⭐ Trader #1 ⭐', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
   ['⭐ Trader #2 ⭐', '0x8efa981f60384083496148b55361a83edc268295'],
   ['⭐ Trader #3 ⭐', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
   ['⭐ Trader #4 ⭐', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
   ['⭐ Trader #5 ⭐', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
-  // Requested former #18 and #25 moved to slots 6 and 7 and starred.
   ['⭐ Trader #6 ⭐', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
   ['⭐ Trader #7 ⭐', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
-  // Remaining retained former slots #6–#16.
-  ['Trader #8', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
-  ['Trader #9', '0x736850ee773ac6170fcaeda596514269b863ee56'],
-  ['Trader #10', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
-  ['Trader #11', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
-  ['Trader #12', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
-  ['Trader #13', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
-  ['Trader #14', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
-  ['Trader #15', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
-  ['Trader #16', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
-  ['Trader #17', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
-  ['Trader #18', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
-  // Requested former #24 retained.
-  ['Trader #19', '0x91c6ed92d018f16ebcf6658aaacb360e110c3f0d'],
-  // 11 replacement research candidates. Public analytics metrics are snapshots, not guarantees.
-  ['Trader #20', '0x9aca58e24ff5845f245e7c2c897fef1bc59b3555'],
-  ['Trader #21', '0x8067cd23db56738d1c08fc6225846d2fd4b05261'],
-  ['Trader #22', '0xe2823659be02e0f48a4660e4da008b5e1abfdf29'],
-  ['Trader #23', '0x4101ce19ee81f24da894976e585f1e79119dbd93'],
-  ['Trader #24', '0xa32533a01bfca623badfaba89fa28c079b8671f7'],
-  ['Trader #25', '0x69443708e5135532d435b7d1a3b7e6bdc481a800'],
-  ['Trader #26', '0x0a506b1e47726e769949086ea60b5b01cbaf956a'],
-  ['Trader #27', '0xdb5a7b0728aa0041fe66a4f775c77e559aa81248'],
-  ['Trader #28', '0xb69eec8fea0081343c3b09e652ba1fa7dcf7033a'],
-  ['Trader #29', '0x096eceb86a9d9a2baa07315464daaa84d0cc07d1'],
-  ['Trader #30', '0x1e0b469b0f10f59bd6c76a010c4b0dd24742b1ef'],
+  ['Trader #9 (original #8)', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
+  ['Trader #10 (original #9)', '0x736850ee773ac6170fcaeda596514269b863ee56'],
+  ['Trader #11 (original #10)', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
+  ['Trader #12 (original #11)', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
+  ['Trader #13 (original #12)', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
+  ['Trader #14 (original #13)', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
+  ['Trader #15 (original #14)', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
+  ['Trader #16 (original #15)', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
+  ['Trader #17 (original #16)', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
+  ['Trader #18 (original #17)', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
+  ['Trader #19 (original #18)', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
+  ['Trader #20 (original #19)', '0x91c6ed92d018f16ebcf6658aaacb360e110c3f0d'],
+  ['Trader #23 (original #23)', '0x4101ce19ee81f24da894976e585f1e79119dbd93'],
+  // Nine additional research candidates; deliberately not starred pending live validation.
+  ['Candidate #22 — 83.4% win rate; 1,246 round-trips', '0xac142fee46f8dacbfef23e1e41d79f1f7233487e'],
+  ['Candidate #23 — 95.4% win rate; 1,102 round-trips', '0x3daf7f1cfd1c289e9b2fb7abb2efbd39f77455d7'],
+  ['Candidate #24 — 74.4% win rate; 900 round-trips', '0x24b5f713959170ffc32697abf41901884895172c'],
+  ['Candidate #25 — 84.0% win rate; 1,478 round-trips', '0x562a90a48f2402faa592cae68410e97944a467b1'],
+  ['Candidate #26 — +$142k realized PnL; 1,043 round-trips', '0xbf2a12006918a9118368910b047291e440c2d457'],
+  ['Candidate #27 — +$564k realized PnL; 1,527 round-trips', '0x8fc7c0442e582bca195978c5a4fdec2e7c5bb0f7'],
+  ['Candidate #28 — 1,285 round-trips; 258 trades in Sep snapshot', '0xa123089267e1dcb7ad841071355617c65b34397b'],
+  ['Candidate #29 — 77.6% win rate; 510 round-trips', '0xfebccc84dc03a58061396373e03d86865cad8568'],
+  ['Candidate #30 — 72.6% win rate; 1,044 round-trips', '0xbddf97f6c00cd874f59ad8d158bef8ba1782136a'],
+
 ];
 
 function parseWallets() {
