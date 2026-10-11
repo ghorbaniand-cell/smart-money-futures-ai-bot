@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.2.0-STARRED-PRIORITY-WATCHLIST-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.3.0-19-RETAINED-11-REPLACEMENTS-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -38,39 +38,41 @@ const STATE_FILE = process.env.GFTSH_WATCH_STATE_FILE || 'production/state/gftsh
 const TG_STATE_FILE = process.env.GFTSH_WATCH_TELEGRAM_STATE_FILE || 'production/state/gftsh_10_wallet_telegram.json';
 
 const DEFAULT_WALLETS = [
-  // User's requested starred priority wallets, in exact order: former #13, #15, #17, #19, #21.
+  // User-retained original slots 1–5, all starred.
   ['⭐ Trader #1 ⭐', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
   ['⭐ Trader #2 ⭐', '0x8efa981f60384083496148b55361a83edc268295'],
   ['⭐ Trader #3 ⭐', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
   ['⭐ Trader #4 ⭐', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
   ['⭐ Trader #5 ⭐', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
-  // Next 11 retained wallets, in exact user-requested order.
-  ['Trader #6', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
-  ['Trader #7', '0x736850ee773ac6170fcaeda596514269b863ee56'],
-  ['Trader #8', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
-  ['Trader #9', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
-  ['Trader #10', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
-  ['Trader #11', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
-  ['Trader #12', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
-  ['Trader #13', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
-  ['Trader #14', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
-  ['Trader #15', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
-  ['Trader #16', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
-  // 14 additional research candidates. Metrics are public analytics snapshots, not guarantees.
-  ['Trader #17', '0x8067cd23db56738d1c08fc6225846d2fd4b05261'],
-  ['Trader #18', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
-  ['Trader #19', '0x9aca58e24ff5845f245e7c2c897fef1bc59b3555'],
-  ['Trader #20', '0x6707013459fa40ab655710bb08690693d539b113'],
-  ['Trader #21', '0xdd854d23fc5af9a152d7aba78153b840bf099d17'],
-  ['Trader #22', '0x69443708e5135532d435b7d1a3b7e6bdc481a800'],
-  ['Trader #23', '0x29754d7a9f9f344327158e2d01508efa415bd558'],
-  ['Trader #24', '0x91c6ed92d018f16ebcf6658aaacb360e110c3f0d'],
-  ['Trader #25', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
-  ['Trader #26', '0xa445a0a15b1d50fa0c4bfe6796d9447e0da5329d'],
-  ['Trader #27', '0xdb42ab87ac1f9f0d6d83dd82ff49137ab70f631d'],
-  ['Trader #28', '0xe31501c472d557bfa145ce105d325fb2dd4cb867'],
-  ['Trader #29', '0x3895d155b005191686476a39580d43258a518e46'],
-  ['Trader #30', '0x30afce2f6842bf183c7e3fe7162e279ff0b6393e'],
+  // Requested former #18 and #25 moved to slots 6 and 7 and starred.
+  ['⭐ Trader #6 ⭐', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
+  ['⭐ Trader #7 ⭐', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
+  // Remaining retained former slots #6–#16.
+  ['Trader #8', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
+  ['Trader #9', '0x736850ee773ac6170fcaeda596514269b863ee56'],
+  ['Trader #10', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
+  ['Trader #11', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
+  ['Trader #12', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
+  ['Trader #13', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
+  ['Trader #14', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
+  ['Trader #15', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
+  ['Trader #16', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
+  ['Trader #17', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
+  ['Trader #18', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
+  // Requested former #24 retained.
+  ['Trader #19', '0x91c6ed92d018f16ebcf6658aaacb360e110c3f0d'],
+  // 11 replacement research candidates. Public analytics metrics are snapshots, not guarantees.
+  ['Trader #20', '0x9aca58e24ff5845f245e7c2c897fef1bc59b3555'],
+  ['Trader #21', '0x8067cd23db56738d1c08fc6225846d2fd4b05261'],
+  ['Trader #22', '0xe2823659be02e0f48a4660e4da008b5e1abfdf29'],
+  ['Trader #23', '0x4101ce19ee81f24da894976e585f1e79119dbd93'],
+  ['Trader #24', '0xa32533a01bfca623badfaba89fa28c079b8671f7'],
+  ['Trader #25', '0x69443708e5135532d435b7d1a3b7e6bdc481a800'],
+  ['Trader #26', '0x0a506b1e47726e769949086ea60b5b01cbaf956a'],
+  ['Trader #27', '0xdb5a7b0728aa0041fe66a4f775c77e559aa81248'],
+  ['Trader #28', '0xb69eec8fea0081343c3b09e652ba1fa7dcf7033a'],
+  ['Trader #29', '0x096eceb86a9d9a2baa07315464daaa84d0cc07d1'],
+  ['Trader #30', '0x1e0b469b0f10f59bd6c76a010c4b0dd24742b1ef'],
 ];
 
 function parseWallets() {
