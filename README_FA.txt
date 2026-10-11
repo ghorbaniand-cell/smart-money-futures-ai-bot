@@ -1,4 +1,4 @@
-GFTSH 30 Wallet Observer — V3.0.0
+GFTSH 30 Wallet Observer — V3.1.0
 
 Included:
 - gftsh_10_wallet_observer.mjs (filename intentionally retained)
@@ -14,7 +14,7 @@ Behavior:
 - Existing-position alert keys and new-fill keys are persisted between scheduled runs.
 
 Wallet selection caveat:
-Wallets 1–10 are the user's existing watchlist. Wallets 11–20 are the previously proposed MirrorTrade candidates. Wallets 21–30 are additional public Hyperliquid leaderboard candidates. These are watchlist candidates for the user's manual analysis, not guaranteed profitable traders or copy recommendations. Some public-ranking metrics can be incomplete or change over time.
+Retained exactly at their previous numbered slots: #5, #7, #8, #11, #13, #15, #16, #17, #19, #21, and #30. The other 19 slots were replaced using public Hyperliquid trader analytics/leaderboards, prioritizing substantial trade history, reported win rate, and positive historical PnL where visible. These are candidates for observation, not guaranteed profitable traders or copy recommendations. Metrics may be incomplete, methodology-dependent, or change over time; exceptionally high win rates can also reflect small recent round-trip samples.
 
 Deployment:
 1. Replace the existing file at the exact path gftsh_10_wallet_observer.mjs.

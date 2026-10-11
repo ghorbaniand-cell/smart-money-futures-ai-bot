@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.0.0-NEW-ENTRY-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.1.0-REFINED-WATCHLIST-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -38,40 +38,37 @@ const STATE_FILE = process.env.GFTSH_WATCH_STATE_FILE || 'production/state/gftsh
 const TG_STATE_FILE = process.env.GFTSH_WATCH_TELEGRAM_STATE_FILE || 'production/state/gftsh_10_wallet_telegram.json';
 
 const DEFAULT_WALLETS = [
-  // 1–10: user's existing watchlist — preserved
-  ['Trader #1',  '0x885989fd94d30c150e6eaf897090509bce4f6aa8'],
-  ['Trader #2',  '0xf97ad6704baec104d00b88e0c157e2b7b3a1ddd1'],
-  ['Trader #3',  '0xe67f141977da22e5c34d15c19b35f180a1532715'],
-  ['Trader #4',  '0x810b41bd2294ea9b87efd8fd03040ff74a1e5130'],
-  ['Trader #5',  '0x736850ee773ac6170fcaeda596514269b863ee56'],
-  ['Trader #6',  '0xad68fabb1bec8b08c8080ad165ae5bdec64136d6'],
-  ['Trader #7',  '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
-  ['Trader #8',  '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
-  ['Trader #9',  '0x58f0bf4307c61bc7a5fe11e24fe36e64300b0d20'],
-  ['Trader #10', '0xd21d931890d27b6e7e2e668f27931e17698e90f1'],
-
-  // 11–20: previously proposed MirrorTrade ranking candidates; manual-review only
+  // User-requested retained slots: #5, #7, #8, #11, #13, #15, #16, #17, #19, #21, #30.
+  // Other 19 slots replaced with public Hyperliquid analytics candidates; metrics change over time.
+  ['Trader #1', '0x9db82c502472d76742fdd69609dfcc6e01327401'],
+  ['Trader #2', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
+  ['Trader #3', '0xc4cc8ab3934d2b4b08e03018aee1ee295a1917d9'],
+  ['Trader #4', '0x04a97ae7f350a22cd0cdb6b1875e8905b76495aa'],
+  ['Trader #5', '0x736850ee773ac6170fcaeda596514269b863ee56'],
+  ['Trader #6', '0x505f21430e54d4fac9fa456ead8c35cac0b3b70d'],
+  ['Trader #7', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
+  ['Trader #8', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
+  ['Trader #9', '0xfdb03a2574e9e7d1c77d9ed752d99cdf25c3db25'],
+  ['Trader #10', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
   ['Trader #11', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
-  ['Trader #12', '0xc74a955d699b771a8c3be0a425567e31bde1ab93'],
+  ['Trader #12', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
   ['Trader #13', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
-  ['Trader #14', '0x9221a960277fe388b899f58117aa9bd298463002'],
+  ['Trader #14', '0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11'],
   ['Trader #15', '0x8efa981f60384083496148b55361a83edc268295'],
   ['Trader #16', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
   ['Trader #17', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
-  ['Trader #18', '0xe31501c472d557bfa145ce105d325fb2dd4cb867'],
+  ['Trader #18', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
   ['Trader #19', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
-  ['Trader #20', '0xac142fee46f8dacbfef23e1e41d79f1f7233487e'],
-
-  // 21–30: additional public Hyperliquid leaderboard candidates; manual-review only
+  ['Trader #20', '0x1c814c8068ddd68bcc79bd9d28a1698ba099072d'],
   ['Trader #21', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
-  ['Trader #22', '0x30afce2f6842bf183c7e3fe7162e279ff0b6393e'],
-  ['Trader #23', '0x9c6a5b4662c722d2c47f43d6c9813cb080ffa4ed'],
-  ['Trader #24', '0x556c8b1c32744692ae52ab2856fdcd8d54acc6c8'],
-  ['Trader #25', '0x6f97b7de6be7b7771e975e46bae96c35e332e172'],
-  ['Trader #26', '0x615a2071e01b28093e65d81be32cea6e173d69d5'],
-  ['Trader #27', '0xbd1c84113c6deb5044be0c2221f9e9403811ff0e'],
-  ['Trader #28', '0x58cbd807135f66e8c9b4f39eea92a612b477bf00'],
-  ['Trader #29', '0xe09726ff25f5001f37b15049f54116cb83d7d0fe'],
+  ['Trader #22', '0xf4939e64793fc85b68ec4ddb1697b01db3977134'],
+  ['Trader #23', '0x1e5cf44f64a66dae56104ed91bf15f6147200ac1'],
+  ['Trader #24', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
+  ['Trader #25', '0x987163b6b482c30c2f5f3aa2760109668eb0091d'],
+  ['Trader #26', '0x469e9a7f624b04c24f0e64edf8d8a277e6bf58a5'],
+  ['Trader #27', '0xedab6e3998ffddcb354094ffe8ca2a3cff8d3370'],
+  ['Trader #28', '0xfce053a5e461683454bf37ad66d20344c0e3f4c0'],
+  ['Trader #29', '0x089fe537f4b2af55fa990bc64ff4125800bba4f8'],
   ['Trader #30', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
 ];
 
