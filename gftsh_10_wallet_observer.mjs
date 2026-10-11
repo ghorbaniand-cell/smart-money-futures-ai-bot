@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.6.0-ORIGINAL-1-19-PLUS-22-23-PLUS-9-CANDIDATES-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.7.0-PRESERVE-21-ADD-9-HIGH-WINRATE-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -60,17 +60,17 @@ const DEFAULT_WALLETS = [
   ['Trader #19 (original #18)', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
   ['Trader #20 (original #19)', '0x91c6ed92d018f16ebcf6658aaacb360e110c3f0d'],
   ['Trader #23 (original #23)', '0x4101ce19ee81f24da894976e585f1e79119dbd93'],
-  // Nine additional research candidates; deliberately not starred pending live validation.
-  ['Candidate #22 — 83.4% win rate; 1,246 round-trips', '0xac142fee46f8dacbfef23e1e41d79f1f7233487e'],
-  ['Candidate #23 — 95.4% win rate; 1,102 round-trips', '0x3daf7f1cfd1c289e9b2fb7abb2efbd39f77455d7'],
-  ['Candidate #24 — 74.4% win rate; 900 round-trips', '0x24b5f713959170ffc32697abf41901884895172c'],
-  ['Candidate #25 — 84.0% win rate; 1,478 round-trips', '0x562a90a48f2402faa592cae68410e97944a467b1'],
-  ['Candidate #26 — +$142k realized PnL; 1,043 round-trips', '0xbf2a12006918a9118368910b047291e440c2d457'],
-  ['Candidate #27 — +$564k realized PnL; 1,527 round-trips', '0x8fc7c0442e582bca195978c5a4fdec2e7c5bb0f7'],
-  ['Candidate #28 — 1,285 round-trips; 258 trades in Sep snapshot', '0xa123089267e1dcb7ad841071355617c65b34397b'],
-  ['Candidate #29 — 77.6% win rate; 510 round-trips', '0xfebccc84dc03a58061396373e03d86865cad8568'],
-  ['Candidate #30 — 72.6% win rate; 1,044 round-trips', '0xbddf97f6c00cd874f59ad8d158bef8ba1782136a'],
-
+  // Nine additional research candidates selected for high historical win rates and positive realized PnL.
+  // Metrics are public historical snapshots, not guarantees; review recent activity and open risk.
+  ['New #22 (89.9% historical win rate)', '0x7e1ad5e2bbe30d6d202e7c41036ea0a07c560be9'],
+  ['New #23 (99.7% historical win rate)', '0xf517639a8872e756ac98d3c65507d2ebc25cc032'],
+  ['New #24 (90.4% historical win rate)', '0xc1791da88cc94c9a39e606d8760183d21268dcbb'],
+  ['New #25 (91.5% historical win rate)', '0xd142479997958a4fefd1f8d5373b31ce36987d73'],
+  ['New #26 (91.7% historical win rate)', '0x547115095b2c969071e5e4034eb73759afe591d3'],
+  ['New #27 (92.0% historical win rate)', '0xdc5289909be4f3ce2604806bdd1448fd307f19f5'],
+  ['New #28 (92.2% historical win rate)', '0x1e5cfdb85df658a344b837344ea661bdd4c41692'],
+  ['New #29 (91.8% historical win rate)', '0x81f6b887657b679d9e23153ffcd703e111010240'],
+  ['New #30 (91.6% historical win rate)', '0x302984eb88bc69dec2c984952895a08e499e79ab'],
 ];
 
 function parseWallets() {
