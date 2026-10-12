@@ -84,7 +84,7 @@ function parseWallets() {
     seen.add(normalized);
     out.push([label || `Trader #${out.length + 1}`, normalized]);
   }
-  if (out.length !== 30) {
+  if (out.length !== 24) {
     throw new Error(`Expected exactly 24 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
   }
   return out;
