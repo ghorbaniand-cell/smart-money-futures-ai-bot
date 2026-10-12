@@ -2,10 +2,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 /*
- * GFTSH — 24 WALLET LIVE FUTURES OBSERVER
+ * GFTSH — 28 WALLET LIVE FUTURES OBSERVER
  * READ ONLY | NO ORDERS | NO AUTO-COPY
  *
- * Scans 30 fixed Hyperliquid perpetual-futures accounts every 5 minutes.
+ * Scans 28 fixed Hyperliquid perpetual-futures accounts every 5 minutes.
  * Alerts:
  *  1) A newly opened position detected in recent fills (independent of entry distance).
  *  2) Any currently open position whose mark is within the configured entry band
@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-24W-LIVE-OBSERVER-V3.16.0-STRK-STARRED-ROSTER-1PCT';
+const VERSION = 'GFTSH-28W-LIVE-OBSERVER-V3.17.0-FOUR-RESEARCH-ADDITIONS-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -50,6 +50,7 @@ const DEFAULT_WALLETS = [
   ['⭐ Intraday Research 1 ⭐', '0x3dd462347e7b42b5a3ea15132b677a4978af7a81'],
   ['⭐ Intraday Research 6 ⭐', '0x88250cf2f6402e856bc85fc65095e4a48bb12cb7'],
   ['⭐ STRK Candidate 2 ⭐', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
+  ['⭐ Research Candidate 6 ⭐', '0xf179326c91d7233ae833d668c5d44c6a7d472161'],
   ['Trader 12', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
   ['Trader 13', '0x736850ee773ac6170fcaeda596514269b863ee56'],
   ['Trader 14', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
@@ -61,7 +62,10 @@ const DEFAULT_WALLETS = [
   ['Trader 20', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
   ['Trader 21', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
   ['Trader 22', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
-  ['Trader 23', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0']
+  ['Trader 23', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
+  ['Research Candidate 1', '0xe31501c472d557bfa145ce105d325fb2dd4cb867'],
+  ['Research Candidate 4', '0xf9077a163e94bfd5a7266b6dd3a39c030e0d89f3'],
+  ['Research Candidate 5', '0xe6503009ee1a648c3775b6b8444afdddb786f1a9']
 ];
 
 function parseWallets() {
@@ -83,8 +87,8 @@ function parseWallets() {
     seen.add(normalized);
     out.push([label || `Trader #${out.length + 1}`, normalized]);
   }
-  if (out.length !== 30) {
-    throw new Error(`Expected exactly 24 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
+  if (out.length !== 28) {
+    throw new Error(`Expected exactly 28 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
   }
   return out;
 }
@@ -279,7 +283,7 @@ async function sendTelegram(message) {
 async function sendStartupStatus() {
   if (!SEND_STARTUP_STATUS) return;
   await sendTelegram([
-    '👁️ GFTSH — 24 WALLET OBSERVER',
+    '👁️ GFTSH — 28 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets: ${WALLETS.length}`,
@@ -457,7 +461,7 @@ async function main() {
 
   const runtimeSec = ((Date.now() - startedAt) / 1000).toFixed(1);
   const cycleMessage = [
-    '👁️ GFTSH — 24 WALLET OBSERVER',
+    '👁️ GFTSH — 28 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets checked successfully: ${walletsSucceeded}/${WALLETS.length}`,
