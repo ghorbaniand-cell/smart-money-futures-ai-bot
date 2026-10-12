@@ -1,27 +1,24 @@
-GFTSH Wallet Observer — V3.14.0 (30-wallet roster)
+GFTSH Wallet Observer — V3.15.0 (30-wallet roster)
 
 Roster updates in this version:
-- Preserves all 9 previous starred priority wallets at positions 1–9.
-- Keeps candidate #1 (0x3dd462...) and candidate #6 (0x88250...) and stars both immediately after the prior starred wallets at positions 10–11.
-- Keeps prior roster wallets 10–21, re-numbered in labels to match their new positions (12–23).
-- Keeps only STRK Candidate 2 at position 24.
-- Keeps Intraday Research Candidate 3 at position 25.
-- Removes prior candidates 2, 4, 5, 7 and 8.
-- Adds five replacement research candidates at positions 26–30.
-- Exactly 30 unique valid addresses.
+- Preserves the 9 previous starred priority wallets at positions 1–9.
+- Keeps candidate #1 and #6 starred at positions 10–11.
+- Keeps the prior core roster and STRK Candidate 2 unchanged.
+- Keeps Intraday Research Candidate 3.
+- Removes four prior replacement candidates (previous replacement 1, 2, 3 and 5).
+- Keeps prior replacement 4 (0x7c356...) because its public snapshot showed 82.9% win rate, 949 round-trips, 3h median hold and +$8,612 open uPnL across two profitable open positions.
+- Adds four new research wallets at the end; exactly 30 unique valid addresses.
 
-New replacement candidates and public profile snapshots:
-26. 0x7e1ad5e2bbe30d6d202e7c41036ea0a07c560be9 — 89.9% win rate, 1,489 round-trips, median hold 6m, +$1.05M aggregate open uPnL, 5 open positions. Source: https://hypersonnar.fr/wallet/0x7e1ad5e2bbe30d6d202e7c41036ea0a07c560be9
-27. 0x203f4c410f3c35cead9f35b6de2f66e773d7f26e — 89.6% win rate, 1,889 round-trips, median hold 34m, +$62.3K aggregate open uPnL, 3 open positions. Source: https://hypersonnar.fr/wallet/0x203f4c410f3c35cead9f35b6de2f66e773d7f26e
-28. 0x654016a8c9fcf0c4cb7ed6078aba21f7f399f7b7 — 100% win rate over 1,432 round-trips, +$1.85M aggregate open uPnL, 14 open positions; median hold was not available on the page. Source: https://hypersonnar.fr/wallet/0x654016a8c9fcf0c4cb7ed6078aba21f7f399f7b7
-29. 0x7c356d5723a70f9d37c01ec7bc62c63e64c98e53 — 82.9% win rate, 949 round-trips, median hold 3h, +$8,612 aggregate open uPnL, 2 open positions, both shown profitable. Source: https://hypersonnar.fr/wallet/0x7c356d5723a70f9d37c01ec7bc62c63e64c98e53
-30. 0x95a5baeadae0de1ea16104f5f4c4ff911f4837da — 90.4% win rate, 879 round-trips, median hold 2.9h, 4 open positions, two winners and two losers; aggregate open uPnL was -$2,843, so this one is a weaker replacement and is NOT currently net-profitable on open positions. Source: https://hypersonnar.fr/wallet/0x95a5baeadae0de1ea16104f5f4c4ff911f4837da
+New replacement candidates — public HyperSonnar snapshots observed Oct 12, 2026:
+1. 0x3a23b10845e911b6944d9dc2f1f480fca3af35d6 — 97.7% win rate (1,050 round-trips), median hold 4.2h, open uPnL +$444.4K across 7 positions. Important risk: margin usage reported at 100.9%, so not a low-risk account. Source: https://hypersonnar.fr/wallet/0x3a23b10845e911b6944d9dc2f1f480fca3af35d6
+2. 0xc179e03922afe8fa9533d3f896338b9fb87ce0c8 — 97.5% win rate (2,000 round-trips), open uPnL +$2.48M across 4 positions, margin usage 51.2%; median hold unavailable in the public snapshot, so short-holding behavior is not confirmed. Source: https://hypersonnar.fr/wallet/0xc179e03922afe8fa9533d3f896338b9fb87ce0c8
+3. 0xbac48231e71d5e24735d3cb6a26e597b13062979 — 100% reported win rate (1,117 round-trips), open uPnL +$274.1K on one position. Median hold 11h and margin usage 113.6%, so it does not fully meet the short-hold / conservative-risk preference. Source: https://hypersonnar.fr/wallet/0xbac48231e71d5e24735d3cb6a26e597b13062979
+4. 0xf08208e088f89970068dc0b2deaa440f6a7d0250 — open uPnL +$31.2K in the observed snapshot, but 48.4% win rate; included only as a lower-confidence research monitor, NOT as a confirmed high-win-rate trader. Source: https://hypersonnar.fr/wallet/0xf08208e088f89970068dc0b2deaa440f6a7d0250
 
-Important research caveat:
-- These are public analytics snapshots, not guarantees or permanent live states. Open positions and uPnL change. The first four replacements showed positive aggregate open uPnL in their respective public snapshots; the fifth is included as a short-hold/high-win-rate candidate but its aggregate open uPnL was negative at the snapshot. Do not treat all five as fully confirmed winners.
-- Candidate #3 was retained at the user's request; its profile snapshot showed 84.6% WR, 1,160 round-trips, 3.1h median hold, and +$4,691 aggregate open uPnL. Source: https://hypersonnar.fr/wallet/0x68a82030ee49af0dd0d1880da1aa18e0e97f003c
-- STRK Candidate 2 is retained at the user's request; its public profile showed 67.9% win rate, 944 round-trips and 19h median hold, so it does not match the short-hold preference. Source: https://hypersonnar.fr/wallet/0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b
-- HyperSonnar describes its analytics as public Hyperliquid data and says unknown values are shown as dashes: https://hypersonnar.fr/docs
+Important transparency note:
+- I could verify profitable open positions for three new wallets, but their short-holding condition is not uniformly confirmed; the fourth has a materially lower win rate. These caveats are explicit rather than claiming all four meet every criterion.
+- Public analytics snapshots can change quickly. This ZIP does not guarantee the positions remain open or profitable when GitHub runs.
+- STRK Candidate 2 is retained at the user's request; its earlier profile showed about 67.9% win rate, 944 round-trips and 19h median hold, so it does not match the short-hold preference.
 
 Behavior:
 - Read-only monitoring: no orders and no automatic copying.

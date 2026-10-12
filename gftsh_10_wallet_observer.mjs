@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.14.0-STARRED-REPLACEMENTS-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.15.0-VERIFIED-REPLACEMENTS-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -63,11 +63,11 @@ const DEFAULT_WALLETS = [
   ['Trader 23', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
   ['STRK Candidate 2', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
   ['Intraday Research 3 — 84.6% WR, 3.1h hold', '0x68a82030ee49af0dd0d1880da1aa18e0e97f003c'],
-  ['Intraday Replacement 1 — 89.9% WR, 6m hold', '0x7e1ad5e2bbe30d6d202e7c41036ea0a07c560be9'],
-  ['Intraday Replacement 2 — 89.6% WR, 34m hold', '0x203f4c410f3c35cead9f35b6de2f66e773d7f26e'],
-  ['Intraday Replacement 3 — 100% WR, hold time unavailable', '0x654016a8c9fcf0c4cb7ed6078aba21f7f399f7b7'],
-  ['Intraday Replacement 4 — 82.9% WR, 3h hold', '0x7c356d5723a70f9d37c01ec7bc62c63e64c98e53'],
-  ['Intraday Replacement 5 — 90.4% WR, 2.9h hold', '0x95a5baeadae0de1ea16104f5f4c4ff911f4837da']
+  ['Intraday Candidate — 82.9% WR, 3h hold, open uPnL positive at snapshot', '0x7c356d5723a70f9d37c01ec7bc62c63e64c98e53'],
+  ['Intraday Replacement A — 97.7% WR, 4.2h hold, open uPnL +$444k snapshot; high margin risk', '0x3a23b10845e911b6944d9dc2f1f480fca3af35d6'],
+  ['Intraday Replacement B — 97.5% WR, 2000 trades, open uPnL +$2.48M snapshot; median hold unavailable', '0xc179e03922afe8fa9533d3f896338b9fb87ce0c8'],
+  ['Intraday Replacement C — 100% WR, 1117 trades, open uPnL +$274k snapshot; 11h median hold/high margin risk', '0xbac48231e71d5e24735d3cb6a26e597b13062979'],
+  ['Intraday Replacement D — open uPnL +$31.2k snapshot, but only 48.4% WR; lower-confidence monitor only', '0xf08208e088f89970068dc0b2deaa440f6a7d0250']
 ];
 
 function parseWallets() {
