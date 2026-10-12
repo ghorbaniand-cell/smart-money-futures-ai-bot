@@ -1,7 +1,7 @@
 name: GFTSH 10 Wallet Observer
 
 # Name deliberately retained for continuity with the existing workflow.
-# The observer now monitors 30 wallets, every 5 minutes (best-effort GitHub schedule).
+# The observer monitors 24 wallets, every 5 minutes (best-effort GitHub schedule).
 
 on:
   schedule:
@@ -48,7 +48,7 @@ jobs:
       - name: Ensure state directory
         run: mkdir -p production/state
 
-      - name: Run 30-wallet observer
+      - name: Run 24-wallet observer
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -69,7 +69,7 @@ jobs:
         shell: bash
         run: |
           set -e
-          echo "GFTSH 30-WALLET OBSERVER — START"
+          echo "GFTSH 24-WALLET OBSERVER — START"
           echo "Node: $(node --version)"
           echo "Trigger: ${{ github.event_name }}"
           echo "Workflow name retained: GFTSH 10 Wallet Observer"
@@ -90,7 +90,7 @@ jobs:
             echo "No state changes to commit."
             exit 0
           fi
-          git commit -m "chore: persist GFTSH 30-wallet observer state"
+          git commit -m "chore: persist GFTSH 24-wallet observer state"
           git push origin HEAD:${GITHUB_REF_NAME}
 
       - name: Notify Telegram on workflow failure
@@ -104,5 +104,5 @@ jobs:
             echo "Telegram failure notification skipped: secrets are not configured."
             exit 0
           fi
-          payload=$(node -e 'console.log(JSON.stringify({chat_id:process.env.TELEGRAM_CHAT_ID,text:"🚨 GFTSH 30-wallet observer workflow FAILED\nRepository: " + process.env.GITHUB_REPOSITORY + "\nRun: " + process.env.GITHUB_SERVER_URL + "/" + process.env.GITHUB_REPOSITORY + "/actions/runs/" + process.env.GITHUB_RUN_ID}))')
+          payload=$(node -e 'console.log(JSON.stringify({chat_id:process.env.TELEGRAM_CHAT_ID,text:"🚨 GFTSH 24-wallet observer workflow FAILED\nRepository: " + process.env.GITHUB_REPOSITORY + "\nRun: " + process.env.GITHUB_SERVER_URL + "/" + process.env.GITHUB_REPOSITORY + "/actions/runs/" + process.env.GITHUB_RUN_ID}))')
           curl --fail --silent --show-error --max-time 15 -H 'Content-Type: application/json' -X POST --data "$payload" "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage"
