@@ -1,4 +1,4 @@
-GFTSH Wallet Observer — V3.8.0 (30-wallet roster)
+GFTSH Wallet Observer — V3.9.0 (30-wallet roster)
 
 Included files:
 - gftsh_10_wallet_observer.mjs (filename intentionally retained)
@@ -6,25 +6,24 @@ Included files:
 - gftsh_10_wallet_observer.env.example
 
 Roster changes:
-- Current roster slots 1–19 are preserved exactly and in the same order.
-- The existing 8 starred entries within those 19 remain starred.
-- The previous entries in slots 20–30 were removed and replaced with 11 new Hyperliquid research candidates.
-- All 30 addresses are unique.
+- Slots 1–19 are preserved exactly, in the same order, from V3.8.
+- Only the previous V3.8 slots 24 and 25 are retained from the old added range.
+- Former slot 25 (0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a) is now starred.
+- The other former V3.8 additions were removed and 9 new research candidates were added.
+- Total: 30 unique wallet addresses. There are 9 starred entries (the previous 8 plus the starred former slot 25).
 
-New candidates in slots 20–30 (public HyperSonnar snapshots, accessed 2026-10-12; statistics can change):
-20. 0x04a97ae7f350a22cd0cdb6b1875e8905b76495aa — 100.0% win rate, 895 trades; reported positive all-time PnL, but open unrealized loss and high margin use were visible.
-21. 0xad68fabb1bec8b08c8080ad165ae5bdec64136d6 — 98.9% win rate, about 1,560 trades; positive recent snapshot.
-22. 0xfdb03a2574e9e7d1c77d9ed752d99cdf25c3db25 — 98.8%, 949 trades.
-23. 0x505f21430e54d4fac9fa456ead8c35cac0b3b70d — 99.9%, 846 trades; recent weekly PnL was negative in the snapshot.
-24. 0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11 — 97.9%, 953 trades; positive weekly/monthly PnL in the snapshot.
-25. 0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a — 83.4%, 723 trades; positive 1D/1W/1M PnL in the snapshot.
-26. 0x1e5cf44f64a66dae56104ed91bf15f6147200ac1 — 89.0%, 788 trades; positive weekly PnL and reported +21% 7-day perp ROI.
-27. 0xa32533a01bfca623badfaba89fa28c079b8671f7 — 86.3%, 1,208 trades; positive 1D/1W/1M PnL in the snapshot.
-28. 0xba67690d19571752e0f845acd48b3349131b723b — 100.0%, 726 trades; positive weekly/monthly PnL in the snapshot.
-29. 0xd74916aecd93ca55deb392dfad4c3ae43951ea49 — 84.6%, 1,309 trades; 16 active days out of 28 and positive open uPnL in the snapshot.
-30. 0xc330a271b48461b0745879c06a933f42f0f4fc69 — 95.3%, 730 trades; high margin usage and relatively small equity were visible.
+New research candidates added after the retained entries (public HyperSonnar snapshots accessed 2026-10-12; metrics may change):
+- 0x9db82c502472d76742fdd69609dfcc6e01327401 — 86.4% win rate; 1,176 lifetime round-trips shown in leaderboard; active 90/92 days in recent snapshot. Current live position data was pending on the profile.
+- 0xd350958b84c64d25652b3a2a92c9509a6c0125a0 — 96.1% win rate; 180 round-trips in recent months; active 74/91 days.
+- 0xf4939e64793fc85b68ec4ddb1697b01db3977134 — 97.5% win rate; 633 trades; recent 7-day result/ROI was negative in snapshot.
+- 0x9b864dde6ed1c21608b1665a0ac0faa4f7e36e6e — 95.1% win rate; 1,155 trades; high margin use was visible despite positive unrealized PnL.
+- 0xaeace0cf7ec951a708de14a335bea8c1e810d11d — 90.1% win rate; 1,045 trades; perp account was empty in snapshot, so current activity is not established.
+- 0xd142479997958a4fefd1f8d5373b31ce36987d73 — 91.5% win rate; 1,227 trades; margin use above 100% in snapshot.
+- 0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0 — 91.6% win rate; 640 trades; small equity and high margin use in snapshot.
+- 0xdc5289909be4f3ce2604806bdd1448fd307f19f5 — 92.0% win rate; 740 trades; high margin use in snapshot.
+- 0x302984eb88bc69dec2c984952895a08e499e79ab — 91.6% win rate; 655 trades; perp account was empty in snapshot.
 
-Important: a high win rate alone is not enough to prove trading quality. Some candidates have high margin usage, unrealized losses, or negative recent weekly results. The addresses are research candidates to monitor, not guaranteed winners or investment advice. HyperSonnar's own methodology states its score is heuristic and historical performance does not guarantee future results.
+These are candidates for read-only monitoring, not guaranteed winners. A high win rate can coexist with negative expectancy, large losses, stale/inactive accounts, or dangerous margin use. Do not treat the list as an endorsement to copy trades.
 
 Behavior remains read-only: no orders and no auto-copy.
 - GitHub Actions scan target: every 5 minutes (best effort).

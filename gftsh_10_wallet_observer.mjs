@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.8.0-PRESERVE-FIRST-19-ADD-11-HIGH-ACTIVITY-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.9.0-PRESERVE-1-19-KEEP-24-25-ADD-9-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -58,19 +58,19 @@ const DEFAULT_WALLETS = [
   ['Trader #17 (original #16)', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
   ['Trader #18 (original #17)', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
   ['Trader #19 (original #18)', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
-  // Slots 20–30 are new research candidates chosen for high historical win rates and substantial trade counts.
-  // Public metrics vary by snapshot; these are candidates to monitor, not guarantees or copy-trade recommendations.
-  ['New #20 (100.0% historical win rate; 895 trades)', '0x04a97ae7f350a22cd0cdb6b1875e8905b76495aa'],
-  ['New #21 (98.9% historical win rate; about 1,560 trades)', '0xad68fabb1bec8b08c8080ad165ae5bdec64136d6'],
-  ['New #22 (98.8% historical win rate; 949 trades)', '0xfdb03a2574e9e7d1c77d9ed752d99cdf25c3db25'],
-  ['New #23 (99.9% historical win rate; 846 trades)', '0x505f21430e54d4fac9fa456ead8c35cac0b3b70d'],
-  ['New #24 (97.9% historical win rate; 953 trades)', '0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11'],
-  ['New #25 (83.4% historical win rate; 723 trades)', '0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a'],
-  ['New #26 (89.0% historical win rate; 788 trades)', '0x1e5cf44f64a66dae56104ed91bf15f6147200ac1'],
-  ['New #27 (86.3% historical win rate; 1,208 trades)', '0xa32533a01bfca623badfaba89fa28c079b8671f7'],
-  ['New #28 (100.0% historical win rate; 726 trades)', '0xba67690d19571752e0f845acd48b3349131b723b'],
-  ['New #29 (84.6% historical win rate; 1,309 trades)', '0xd74916aecd93ca55deb392dfad4c3ae43951ea49'],
-  ['New #30 (95.3% historical win rate; 730 trades)', '0xc330a271b48461b0745879c06a933f42f0f4fc69'],
+  // Slots 20–30: keep only former V3.8 slots 24 and 25; replace the rest with new research candidates.
+  // Metrics are historical snapshots and do not guarantee future performance.
+  ['Retained former #24 (97.9% historical win rate; 953 trades)', '0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11'],
+  ['⭐ Retained former #25 (83.4% historical win rate; 723 trades) ⭐', '0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a'],
+  ['New slot #22 (86.4% win rate; 1,176 lifetime trades; active 90/92 days in snapshot)', '0x9db82c502472d76742fdd69609dfcc6e01327401'],
+  ['New slot #23 (96.1% win rate; 180 recent round-trips; active 74/91 days)', '0xd350958b84c64d25652b3a2a92c9509a6c0125a0'],
+  ['New slot #24 (97.5% win rate; 633 trades; recent weekly result negative)', '0xf4939e64793fc85b68ec4ddb1697b01db3977134'],
+  ['New slot #25 (95.1% win rate; 1,155 trades; high margin use)', '0x9b864dde6ed1c21608b1665a0ac0faa4f7e36e6e'],
+  ['New slot #26 (90.1% win rate; 1,045 trades; perp account empty in snapshot)', '0xaeace0cf7ec951a708de14a335bea8c1e810d11d'],
+  ['New slot #27 (91.5% win rate; 1,227 trades; high margin use)', '0xd142479997958a4fefd1f8d5373b31ce36987d73'],
+  ['New slot #28 (91.6% win rate; 640 trades; small equity and high margin use)', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
+  ['New slot #29 (92.0% win rate; 740 trades; high margin use)', '0xdc5289909be4f3ce2604806bdd1448fd307f19f5'],
+  ['New slot #30 (91.6% win rate; 655 trades; perp account empty in snapshot)', '0x302984eb88bc69dec2c984952895a08e499e79ab'],
 ];
 
 function parseWallets() {
