@@ -2,10 +2,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 /*
- * GFTSH — 24 WALLET LIVE FUTURES OBSERVER
+ * GFTSH — 30 WALLET LIVE FUTURES OBSERVER
  * READ ONLY | NO ORDERS | NO AUTO-COPY
  *
- * Scans 24 fixed Hyperliquid perpetual-futures accounts every 5 minutes.
+ * Scans 30 fixed Hyperliquid perpetual-futures accounts every 5 minutes.
  * Alerts:
  *  1) A newly opened position detected in recent fills (independent of entry distance).
  *  2) Any currently open position whose mark is within the configured entry band
@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-24W-LIVE-OBSERVER-V3.11.0-STRK-CANDIDATES-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.12.0-INTRADAY-CANDIDATES-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -38,7 +38,6 @@ const STATE_FILE = process.env.GFTSH_WATCH_STATE_FILE || 'production/state/gftsh
 const TG_STATE_FILE = process.env.GFTSH_WATCH_TELEGRAM_STATE_FILE || 'production/state/gftsh_10_wallet_telegram.json';
 
 const DEFAULT_WALLETS = [
-  // Priority wallets 1–9 are grouped first based on the user’s observed performance.
   ['⭐ Priority Trader 1 ⭐', '0xe2823659be02e0f48a4660e4da008b5e1abfdf29'],
   ['⭐ Priority Trader 2 ⭐', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
   ['⭐ Priority Trader 3 ⭐', '0x8efa981f60384083496148b55361a83edc268295'],
@@ -60,9 +59,15 @@ const DEFAULT_WALLETS = [
   ['Trader 19', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
   ['Trader 20', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
   ['Trader 21', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
-  ['STRK Candidate 1', '0x2f595acaf1e762a16407e295e9ed6cdc162dd982'],
   ['STRK Candidate 2', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
-  ['STRK Candidate 3', '0x7b29f8c0ea709b96b72214b3de5d85c3d9570794'],
+  ['Intraday Candidate 1', '0x06879e9f0a959db942ac868ff496ca538292e4d2'],
+  ['Intraday Candidate 2', '0x1894e1de52e240b3ccb0d6dddf4de7caeb686216'],
+  ['Intraday Candidate 3', '0xa449037aaedcdbf6398a5d1ce0c172b55d27a51f'],
+  ['Intraday Candidate 4', '0x1666b6d0ee920473efc14d110866ea3fd874cf05'],
+  ['Intraday Candidate 5', '0x9fc0156fd4bb5c084181aa538a4919b5e165d55c'],
+  ['Intraday Candidate 6', '0x21c66a5ada0c4472735ee1b55e8ed1f3af2c323c'],
+  ['Intraday Candidate 7', '0xcb8a6cb5d937a26217c9cdc827bbb6bf10af448d'],
+  ['Intraday Candidate 8', '0x8911380d223aae1f90700c4093d0c9e16b163893']
 ];
 
 function parseWallets() {
@@ -84,8 +89,8 @@ function parseWallets() {
     seen.add(normalized);
     out.push([label || `Trader #${out.length + 1}`, normalized]);
   }
-  if (out.length !== 24) {
-    throw new Error(`Expected exactly 24 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
+  if (out.length !== 30) {
+    throw new Error(`Expected exactly 30 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
   }
   return out;
 }
@@ -280,7 +285,7 @@ async function sendTelegram(message) {
 async function sendStartupStatus() {
   if (!SEND_STARTUP_STATUS) return;
   await sendTelegram([
-    '👁️ GFTSH — 24 WALLET OBSERVER',
+    '👁️ GFTSH — 30 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets: ${WALLETS.length}`,
@@ -458,7 +463,7 @@ async function main() {
 
   const runtimeSec = ((Date.now() - startedAt) / 1000).toFixed(1);
   const cycleMessage = [
-    '👁️ GFTSH — 24 WALLET OBSERVER',
+    '👁️ GFTSH — 30 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets checked successfully: ${walletsSucceeded}/${WALLETS.length}`,
