@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.12.0-INTRADAY-CANDIDATES-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.13.0-RESEARCHED-INTRADAY-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -60,14 +60,14 @@ const DEFAULT_WALLETS = [
   ['Trader 20', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
   ['Trader 21', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
   ['STRK Candidate 2', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
-  ['Intraday Candidate 1', '0x06879e9f0a959db942ac868ff496ca538292e4d2'],
-  ['Intraday Candidate 2', '0x1894e1de52e240b3ccb0d6dddf4de7caeb686216'],
-  ['Intraday Candidate 3', '0xa449037aaedcdbf6398a5d1ce0c172b55d27a51f'],
-  ['Intraday Candidate 4', '0x1666b6d0ee920473efc14d110866ea3fd874cf05'],
-  ['Intraday Candidate 5', '0x9fc0156fd4bb5c084181aa538a4919b5e165d55c'],
-  ['Intraday Candidate 6', '0x21c66a5ada0c4472735ee1b55e8ed1f3af2c323c'],
-  ['Intraday Candidate 7', '0xcb8a6cb5d937a26217c9cdc827bbb6bf10af448d'],
-  ['Intraday Candidate 8', '0x8911380d223aae1f90700c4093d0c9e16b163893']
+  ['Intraday Research 1 — 98.5% WR, 6m hold', '0x3dd462347e7b42b5a3ea15132b677a4978af7a81'],
+  ['Intraday Research 2 — 95.3% WR, 2.3h hold', '0xc330a271b48461b0745879c06a933f42f0f4fc69'],
+  ['Intraday Research 3 — 84.6% WR, 3.1h hold', '0x68a82030ee49af0dd0d1880da1aa18e0e97f003c'],
+  ['Intraday Research 4 — 70.3% WR, 2.8h hold', '0xdb42ab87ac1f9f0d6d83dd82ff49137ab70f631d'],
+  ['Intraday Research 5 — 69.9% WR, 3.7h hold', '0x69443708e5135532d435b7d1a3b7e6bdc481a800'],
+  ['Intraday Research 6 — 80.1% WR, 3.7h hold', '0x88250cf2f6402e856bc85fc65095e4a48bb12cb7'],
+  ['Intraday Research 7 — 86.7% WR, 8.7h hold', '0x0e73ca2bed8f84ba0cf139aa96ae3927e77b066e'],
+  ['Intraday Research 8 — 84.6% WR, 12h hold', '0xd74916aecd93ca55deb392dfad4c3ae43951ea49']
 ];
 
 function parseWallets() {
