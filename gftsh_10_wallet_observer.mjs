@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.13.0-RESEARCHED-INTRADAY-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.14.0-STARRED-REPLACEMENTS-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -47,27 +47,27 @@ const DEFAULT_WALLETS = [
   ['⭐ Priority Trader 7 ⭐', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
   ['⭐ Priority Trader 8 ⭐', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
   ['⭐ Priority Trader 9 ⭐', '0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a'],
-  ['Trader 10', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
-  ['Trader 11', '0x736850ee773ac6170fcaeda596514269b863ee56'],
-  ['Trader 12', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
-  ['Trader 13', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
-  ['Trader 14', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
-  ['Trader 15', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
-  ['Trader 16', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
-  ['Trader 17', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
-  ['Trader 18', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
-  ['Trader 19', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
-  ['Trader 20', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
-  ['Trader 21', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
+  ['⭐ Intraday Research 1 ⭐', '0x3dd462347e7b42b5a3ea15132b677a4978af7a81'],
+  ['⭐ Intraday Research 6 ⭐', '0x88250cf2f6402e856bc85fc65095e4a48bb12cb7'],
+  ['Trader 12', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
+  ['Trader 13', '0x736850ee773ac6170fcaeda596514269b863ee56'],
+  ['Trader 14', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
+  ['Trader 15', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
+  ['Trader 16', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
+  ['Trader 17', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
+  ['Trader 18', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
+  ['Trader 19', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
+  ['Trader 20', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
+  ['Trader 21', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
+  ['Trader 22', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
+  ['Trader 23', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
   ['STRK Candidate 2', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
-  ['Intraday Research 1 — 98.5% WR, 6m hold', '0x3dd462347e7b42b5a3ea15132b677a4978af7a81'],
-  ['Intraday Research 2 — 95.3% WR, 2.3h hold', '0xc330a271b48461b0745879c06a933f42f0f4fc69'],
   ['Intraday Research 3 — 84.6% WR, 3.1h hold', '0x68a82030ee49af0dd0d1880da1aa18e0e97f003c'],
-  ['Intraday Research 4 — 70.3% WR, 2.8h hold', '0xdb42ab87ac1f9f0d6d83dd82ff49137ab70f631d'],
-  ['Intraday Research 5 — 69.9% WR, 3.7h hold', '0x69443708e5135532d435b7d1a3b7e6bdc481a800'],
-  ['Intraday Research 6 — 80.1% WR, 3.7h hold', '0x88250cf2f6402e856bc85fc65095e4a48bb12cb7'],
-  ['Intraday Research 7 — 86.7% WR, 8.7h hold', '0x0e73ca2bed8f84ba0cf139aa96ae3927e77b066e'],
-  ['Intraday Research 8 — 84.6% WR, 12h hold', '0xd74916aecd93ca55deb392dfad4c3ae43951ea49']
+  ['Intraday Replacement 1 — 89.9% WR, 6m hold', '0x7e1ad5e2bbe30d6d202e7c41036ea0a07c560be9'],
+  ['Intraday Replacement 2 — 89.6% WR, 34m hold', '0x203f4c410f3c35cead9f35b6de2f66e773d7f26e'],
+  ['Intraday Replacement 3 — 100% WR, hold time unavailable', '0x654016a8c9fcf0c4cb7ed6078aba21f7f399f7b7'],
+  ['Intraday Replacement 4 — 82.9% WR, 3h hold', '0x7c356d5723a70f9d37c01ec7bc62c63e64c98e53'],
+  ['Intraday Replacement 5 — 90.4% WR, 2.9h hold', '0x95a5baeadae0de1ea16104f5f4c4ff911f4837da']
 ];
 
 function parseWallets() {
