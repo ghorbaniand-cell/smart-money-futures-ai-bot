@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 /*
- * GFTSH — 30 WALLET LIVE FUTURES OBSERVER
+ * GFTSH — 24 WALLET LIVE FUTURES OBSERVER
  * READ ONLY | NO ORDERS | NO AUTO-COPY
  *
  * Scans 30 fixed Hyperliquid perpetual-futures accounts every 5 minutes.
@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.15.0-VERIFIED-REPLACEMENTS-1PCT';
+const VERSION = 'GFTSH-24W-LIVE-OBSERVER-V3.16.0-STRK-STARRED-ROSTER-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -49,6 +49,7 @@ const DEFAULT_WALLETS = [
   ['⭐ Priority Trader 9 ⭐', '0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a'],
   ['⭐ Intraday Research 1 ⭐', '0x3dd462347e7b42b5a3ea15132b677a4978af7a81'],
   ['⭐ Intraday Research 6 ⭐', '0x88250cf2f6402e856bc85fc65095e4a48bb12cb7'],
+  ['⭐ STRK Candidate 2 ⭐', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
   ['Trader 12', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
   ['Trader 13', '0x736850ee773ac6170fcaeda596514269b863ee56'],
   ['Trader 14', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
@@ -60,14 +61,7 @@ const DEFAULT_WALLETS = [
   ['Trader 20', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
   ['Trader 21', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
   ['Trader 22', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
-  ['Trader 23', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
-  ['STRK Candidate 2', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
-  ['Intraday Research 3 — 84.6% WR, 3.1h hold', '0x68a82030ee49af0dd0d1880da1aa18e0e97f003c'],
-  ['Intraday Candidate — 82.9% WR, 3h hold, open uPnL positive at snapshot', '0x7c356d5723a70f9d37c01ec7bc62c63e64c98e53'],
-  ['Intraday Replacement A — 97.7% WR, 4.2h hold, open uPnL +$444k snapshot; high margin risk', '0x3a23b10845e911b6944d9dc2f1f480fca3af35d6'],
-  ['Intraday Replacement B — 97.5% WR, 2000 trades, open uPnL +$2.48M snapshot; median hold unavailable', '0xc179e03922afe8fa9533d3f896338b9fb87ce0c8'],
-  ['Intraday Replacement C — 100% WR, 1117 trades, open uPnL +$274k snapshot; 11h median hold/high margin risk', '0xbac48231e71d5e24735d3cb6a26e597b13062979'],
-  ['Intraday Replacement D — open uPnL +$31.2k snapshot, but only 48.4% WR; lower-confidence monitor only', '0xf08208e088f89970068dc0b2deaa440f6a7d0250']
+  ['Trader 23', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0']
 ];
 
 function parseWallets() {
@@ -90,7 +84,7 @@ function parseWallets() {
     out.push([label || `Trader #${out.length + 1}`, normalized]);
   }
   if (out.length !== 30) {
-    throw new Error(`Expected exactly 30 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
+    throw new Error(`Expected exactly 24 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
   }
   return out;
 }
@@ -285,7 +279,7 @@ async function sendTelegram(message) {
 async function sendStartupStatus() {
   if (!SEND_STARTUP_STATUS) return;
   await sendTelegram([
-    '👁️ GFTSH — 30 WALLET OBSERVER',
+    '👁️ GFTSH — 24 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets: ${WALLETS.length}`,
@@ -463,7 +457,7 @@ async function main() {
 
   const runtimeSec = ((Date.now() - startedAt) / 1000).toFixed(1);
   const cycleMessage = [
-    '👁️ GFTSH — 30 WALLET OBSERVER',
+    '👁️ GFTSH — 24 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets checked successfully: ${walletsSucceeded}/${WALLETS.length}`,
