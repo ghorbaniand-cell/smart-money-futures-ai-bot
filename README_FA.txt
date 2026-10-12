@@ -1,10 +1,11 @@
-GFTSH Wallet Observer — V3.10.0 (30-wallet roster)
+GFTSH Wallet Observer — V3.11.0 (24-wallet roster)
 
 Roster organization:
-- 30 unique Hyperliquid perpetual-futures wallet addresses.
-- The 9 wallets marked as priority are grouped together in positions 1–9.
-- The priority grouping reflects the user's observed results; it is not a guarantee of future performance.
-- The remaining 21 wallets are listed in positions 10–30.
+- 24 unique Hyperliquid perpetual-futures wallet addresses.
+- The 9 priority wallets are grouped in positions 1–9, based on the user's observed performance.
+- Positions 10–20 are retained from the prior roster.
+- Position 21 retains the additionally requested wallet.
+- Positions 22–24 are three STRK-related research candidates. The public evidence found so far does not prove all three captured both the STRK top/bottom or closed profitable trades; they are included for observation, not endorsed as verified winners.
 
 Behavior:
 - Read-only monitoring: no orders and no automatic copying.
@@ -17,7 +18,7 @@ Configuration:
 1. Replace the existing worker with exact filename gftsh_10_wallet_observer.mjs.
 2. Replace .github/workflows/gftsh_10_wallet_observer.yml; keep workflow name exactly “GFTSH 10 Wallet Observer”.
 3. Ensure GitHub Actions secrets TELEGRAM_TOKEN and TELEGRAM_CHAT_ID are configured.
-4. Keep GFTSH_WATCH_WALLETS blank to use the built-in 30-wallet roster.
+4. Keep GFTSH_WATCH_WALLETS blank to use the built-in 24-wallet roster.
 5. Run workflow_dispatch once, inspect Telegram/API results, then verify scheduled runs.
 
 This ZIP is a local patch; it has not been installed or runtime-tested on GitHub.
