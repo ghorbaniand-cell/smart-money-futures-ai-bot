@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.9.0-PRESERVE-1-19-KEEP-24-25-ADD-9-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.10.0-PRIORITY-FIRST-9-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -38,39 +38,37 @@ const STATE_FILE = process.env.GFTSH_WATCH_STATE_FILE || 'production/state/gftsh
 const TG_STATE_FILE = process.env.GFTSH_WATCH_TELEGRAM_STATE_FILE || 'production/state/gftsh_10_wallet_telegram.json';
 
 const DEFAULT_WALLETS = [
-  // Slots 1–19 preserved exactly from the current V3.7 roster, including 8 starred traders.
-  ['⭐ PRIORITY TRADER #22 ⭐', '0xe2823659be02e0f48a4660e4da008b5e1abfdf29'],
-  ['⭐ Trader #1 ⭐', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
-  ['⭐ Trader #2 ⭐', '0x8efa981f60384083496148b55361a83edc268295'],
-  ['⭐ Trader #3 ⭐', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
-  ['⭐ Trader #4 ⭐', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
-  ['⭐ Trader #5 ⭐', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
-  ['⭐ Trader #6 ⭐', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
-  ['⭐ Trader #7 ⭐', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
-  ['Trader #9 (original #8)', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
-  ['Trader #10 (original #9)', '0x736850ee773ac6170fcaeda596514269b863ee56'],
-  ['Trader #11 (original #10)', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
-  ['Trader #12 (original #11)', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
-  ['Trader #13 (original #12)', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
-  ['Trader #14 (original #13)', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
-  ['Trader #15 (original #14)', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
-  ['Trader #16 (original #15)', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
-  ['Trader #17 (original #16)', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
-  ['Trader #18 (original #17)', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
-  ['Trader #19 (original #18)', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
-  // Slots 20–30: keep only former V3.8 slots 24 and 25; replace the rest with new research candidates.
-  // Metrics are historical snapshots and do not guarantee future performance.
-  ['Retained former #24 (97.9% historical win rate; 953 trades)', '0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11'],
-  ['⭐ Retained former #25 (83.4% historical win rate; 723 trades) ⭐', '0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a'],
-  ['New slot #22 (86.4% win rate; 1,176 lifetime trades; active 90/92 days in snapshot)', '0x9db82c502472d76742fdd69609dfcc6e01327401'],
-  ['New slot #23 (96.1% win rate; 180 recent round-trips; active 74/91 days)', '0xd350958b84c64d25652b3a2a92c9509a6c0125a0'],
-  ['New slot #24 (97.5% win rate; 633 trades; recent weekly result negative)', '0xf4939e64793fc85b68ec4ddb1697b01db3977134'],
-  ['New slot #25 (95.1% win rate; 1,155 trades; high margin use)', '0x9b864dde6ed1c21608b1665a0ac0faa4f7e36e6e'],
-  ['New slot #26 (90.1% win rate; 1,045 trades; perp account empty in snapshot)', '0xaeace0cf7ec951a708de14a335bea8c1e810d11d'],
-  ['New slot #27 (91.5% win rate; 1,227 trades; high margin use)', '0xd142479997958a4fefd1f8d5373b31ce36987d73'],
-  ['New slot #28 (91.6% win rate; 640 trades; small equity and high margin use)', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
-  ['New slot #29 (92.0% win rate; 740 trades; high margin use)', '0xdc5289909be4f3ce2604806bdd1448fd307f19f5'],
-  ['New slot #30 (91.6% win rate; 655 trades; perp account empty in snapshot)', '0x302984eb88bc69dec2c984952895a08e499e79ab'],
+  // The 9 priority wallets are grouped first, based on the user's observed performance.
+  ['⭐ Priority Trader 1 ⭐', '0xe2823659be02e0f48a4660e4da008b5e1abfdf29'],
+  ['⭐ Priority Trader 2 ⭐', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
+  ['⭐ Priority Trader 3 ⭐', '0x8efa981f60384083496148b55361a83edc268295'],
+  ['⭐ Priority Trader 4 ⭐', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
+  ['⭐ Priority Trader 5 ⭐', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
+  ['⭐ Priority Trader 6 ⭐', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
+  ['⭐ Priority Trader 7 ⭐', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
+  ['⭐ Priority Trader 8 ⭐', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
+  ['⭐ Priority Trader 9 ⭐', '0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a'],
+  ['Trader 10', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
+  ['Trader 11', '0x736850ee773ac6170fcaeda596514269b863ee56'],
+  ['Trader 12', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
+  ['Trader 13', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
+  ['Trader 14', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
+  ['Trader 15', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
+  ['Trader 16', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
+  ['Trader 17', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
+  ['Trader 18', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
+  ['Trader 19', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
+  ['Trader 20', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
+  ['Trader 21', '0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11'],
+  ['Trader 22', '0x9db82c502472d76742fdd69609dfcc6e01327401'],
+  ['Trader 23', '0xd350958b84c64d25652b3a2a92c9509a6c0125a0'],
+  ['Trader 24', '0xf4939e64793fc85b68ec4ddb1697b01db3977134'],
+  ['Trader 25', '0x9b864dde6ed1c21608b1665a0ac0faa4f7e36e6e'],
+  ['Trader 26', '0xaeace0cf7ec951a708de14a335bea8c1e810d11d'],
+  ['Trader 27', '0xd142479997958a4fefd1f8d5373b31ce36987d73'],
+  ['Trader 28', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
+  ['Trader 29', '0xdc5289909be4f3ce2604806bdd1448fd307f19f5'],
+  ['Trader 30', '0x302984eb88bc69dec2c984952895a08e499e79ab'],
 ];
 
 function parseWallets() {
