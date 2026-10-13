@@ -2,10 +2,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 /*
- * GFTSH — 30 WALLET LIVE FUTURES OBSERVER
+ * GFTSH — TOKEN SHORT-WALLET LIVE FUTURES OBSERVER
  * READ ONLY | NO ORDERS | NO AUTO-COPY
  *
- * Scans 30 fixed Hyperliquid perpetual-futures accounts every 5 minutes.
+ * Scans 39 selected Hyperliquid perpetual-futures accounts every 5 minutes.
  * Alerts:
  *  1) A newly opened position detected in recent fills (independent of entry distance).
  *  2) Any currently open position whose mark is within the configured entry band
@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.18.0-ROSTER-REFRESH-1PCT';
+const VERSION = 'GFTSH-TOKEN-SHORT-WALLETS-V3.19.0-RESEARCH-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -50,24 +50,33 @@ const DEFAULT_WALLETS = [
   ['⭐ Trader 10 ⭐', '0x3dd462347e7b42b5a3ea15132b677a4978af7a81'],
   ['⭐ Trader 11 ⭐', '0x88250cf2f6402e856bc85fc65095e4a48bb12cb7'],
   ['⭐ Trader 12 ⭐', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
-  ['⭐ Trader 13 — Research Candidate 6 ⭐', '0xf179326c91d7233ae833d668c5d44c6a7d472161'],
+  ['⭐ Trader 13 ⭐', '0xf179326c91d7233ae833d668c5d44c6a7d472161'],
   ['⭐ Trader 14 ⭐', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
-  ['Trader 15', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
-  ['Trader 16', '0x736850ee773ac6170fcaeda596514269b863ee56'],
-  ['Trader 17', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
-  ['Trader 18', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
-  ['Trader 19', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
-  ['Trader 20', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
-  ['Trader 21', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
-  ['Trader 22', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
-  ['Trader 23', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
-  ['Trader 24', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
-  ['Trader 25 — Research Candidate 1', '0xe31501c472d557bfa145ce105d325fb2dd4cb867'],
-  ['Trader 26 — Research Candidate 4', '0xf9077a163e94bfd5a7266b6dd3a39c030e0d89f3'],
-  ['Trader 27 — Research Candidate 5', '0xe6503009ee1a648c3775b6b8444afdddb786f1a9'],
-  ['Trader 28 — Research Candidate — 19 open positions', '0xdb42ab87ac1f9f0d6d83dd82ff49137ab70f631d'],
-  ['Trader 29 — Research Candidate — 96% WR', '0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11'],
-  ['Trader 30 — Research Candidate — 95% WR', '0xc330a271b48461b0745879c06a933f42f0f4fc69'],
+  ['⭐ Trader 15 ⭐', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
+  ['⭐ Trader 16 ⭐', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
+  ['⭐ Trader 17 ⭐', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
+  ['⭐ Trader 18 ⭐', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
+  ['⭐ Trader 19 ⭐', '0xe31501c472d557bfa145ce105d325fb2dd4cb867'],
+  ['Trader 20', '0x736850ee773ac6170fcaeda596514269b863ee56'],
+  ['Trader 21', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
+  ['Trader 22', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
+  ['Trader 23', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
+  ['Trader 24', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
+  ['Trader 25', '0xf9077a163e94bfd5a7266b6dd3a39c030e0d89f3'],
+  ['Trader 26', '0xe6503009ee1a648c3775b6b8444afdddb786f1a9'],
+  ['Trader 27 — PONS short candidate — large open short', '0xdd53c5297309130ab5fe5623dc905752e3342b13'],
+  ['Trader 28 — PONS short candidate — large open short; reported PONS realized PnL', '0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f'],
+  ['Trader 29 — PONS short candidate — high reported realized PnL', '0x015354106478dda69c4aae3c0cf801290b738052'],
+  ['Trader 30 — PONS short candidate — large open short', '0x645b2eeaa0a46df3c4211bebda1b2c7703e287b8'],
+  ['Trader 31 — PONS short candidate — profitable open short', '0x64b766b07362405a9cc19c2226490f3015929da9'],
+  ['Trader 32 — PONS short candidate — profitable open short', '0xd4c1f7e8d876c4749228d515473d36f919583d1d'],
+  ['Trader 33 — PONS short candidate — profitable open short', '0x6859da14835424957a1e6b397d8026b1d9ff7e1e'],
+  ['Trader 34 — PONS short candidate — profitable open short; reported realized PnL', '0x34ea1e25034eb9d49f23c5c55483c84a9d642f47'],
+  ['Trader 35 — STRK short candidate — large profitable open short', '0x8af700ba841f30e0a3fcb0ee4c4a9d223e1efa05'],
+  ['Trader 36 — STRK short candidate — profitable open short', '0x7717a7a245d9f950e586822b8c9b46863ed7bd7e'],
+  ['Trader 37 — STRK short candidate — profitable open short', '0x92bbd8110393350dda7e9c32089e95af071a9b6f'],
+  ['Trader 38 — STRK short candidate — profitable open short', '0x8cc94dc843e1ea7a19805e0cca43001123512b6a'],
+  ['Trader 39 — STRK short candidate — profitable open short', '0xbfc79c444c41a74516bf31237ebf586a231480b4'],
 ];
 
 function parseWallets() {
@@ -89,8 +98,8 @@ function parseWallets() {
     seen.add(normalized);
     out.push([label || `Trader #${out.length + 1}`, normalized]);
   }
-  if (out.length !== 30) {
-    throw new Error(`Expected exactly 30 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
+  if (out.length !== 39) {
+    throw new Error(`Expected exactly 39 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
   }
   return out;
 }
@@ -285,7 +294,7 @@ async function sendTelegram(message) {
 async function sendStartupStatus() {
   if (!SEND_STARTUP_STATUS) return;
   await sendTelegram([
-    '👁️ GFTSH — 30 WALLET OBSERVER',
+    '👁️ GFTSH — 39 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets: ${WALLETS.length}`,
@@ -463,7 +472,7 @@ async function main() {
 
   const runtimeSec = ((Date.now() - startedAt) / 1000).toFixed(1);
   const cycleMessage = [
-    '👁️ GFTSH — 30 WALLET OBSERVER',
+    '👁️ GFTSH — 39 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets checked successfully: ${walletsSucceeded}/${WALLETS.length}`,
