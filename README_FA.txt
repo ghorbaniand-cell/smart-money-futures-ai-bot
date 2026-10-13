@@ -1,16 +1,14 @@
-GFTSH Hyperliquid Wallet Observer — V3.19.0 (39-wallet research roster)
+GFTSH Hyperliquid Wallet Observer — V3.20.0 (31-wallet roster cleanup)
 
-Roster changes requested
-- Starred the former V3.18 roster entries #15, #19, #23, #24 and #25, then grouped them with the existing starred traders at the top. Labels are sequentially renumbered.
-- Removed the former V3.18 entries #17, #28, #29 and #30.
-- Kept the other V3.18 addresses.
-- Added 13 distinct token-specific short-position research candidates identified from public Hyperliquid position snapshots for STRK and PONS. The PONS candidates are the larger visible open shorts with entry prices above the snapshot mark; the STRK candidates are visible open shorts with entry prices above the snapshot mark. One wallet appears across both markets and is included only once. Final roster: 39 unique addresses.
+Roster changes in this patch
+- Removed the V3.19 roster entries #25, #26, #27, #29, #30, #31, #37 and #39.
+- Starred former entries #28, #32, #35 and #36, and moved them beside the existing starred wallets at the top.
+- Preserved every other V3.19 wallet. All labels are renumbered sequentially after grouping.
+- Final roster: 31 unique addresses.
 
-Important research limitation
-- Most of the market-specific PnL evidence available in the public pages is unrealized PnL on open positions, not realized profit from closed shorts. Some PONS wallets also have separately reported positive realized PnL on PONS over the reported 7-day window. These metrics are snapshots and can change quickly.
-- I did not add a W wallet as a proven profitable short: the accessible snapshot showed the visible large W shorts losing at the time, and the W price had rebounded sharply.
-- I did not add a KORU wallet as a proven profitable short: the available public market-specific sample was too thin to establish a meaningful profitable short trader. It is safer not to invent or infer a winning short from an abbreviated address or an unverified side.
-- These candidates are for observation and manual verification only; they are not proof of repeatable early entry, timely exits, or future profitability.
+Research note
+- The STRK/PONS wallet-specific evidence in the prior roster came from public position snapshots. Open-position PnL is not the same as realized profit, and a snapshot does not prove repeatable timing or future profitability.
+- Wallets remain observation-only candidates, not endorsements or automated-copy targets.
 
 Behavior/configuration preserved
 - Hyperliquid only; read-only. No orders and no auto-copy.
@@ -26,7 +24,7 @@ Install
 1. Replace gftsh_10_wallet_observer.mjs with the file in this ZIP.
 2. Replace .github/workflows/gftsh_10_wallet_observer.yml with the file in this ZIP.
 3. Ensure TELEGRAM_TOKEN and TELEGRAM_CHAT_ID are configured as GitHub Actions secrets.
-4. Leave GFTSH_WATCH_WALLETS blank/unset to use the built-in roster. If supplying a custom roster, it must contain exactly 39 unique valid addresses.
+4. Leave GFTSH_WATCH_WALLETS blank/unset to use the built-in roster. If supplying a custom roster, it must contain exactly 31 unique valid addresses.
 5. Run workflow_dispatch once and inspect the run logs and Telegram delivery. Verify subsequent scheduled runs.
 
 Local checks: JavaScript syntax, roster count, address format and uniqueness. This ZIP has not been installed on GitHub and has not been live-tested against Hyperliquid or Telegram.
