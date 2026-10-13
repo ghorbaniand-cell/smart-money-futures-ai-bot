@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.22.0-TWO-RESEARCH-CANDIDATES-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.23.0-PROFIT-VOLUME-REPLACEMENTS-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -66,8 +66,8 @@ const DEFAULT_WALLETS = [
   ['Trader 26', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
   ['Trader 27', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
   ['Trader 28', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
-  ['Research Candidate 29 — 95.3% win rate / 730 round-trips / 2.3h median hold; high margin risk — verify before trusting', '0xc330a271b48461b0745879c06a933f42f0f4fc69'],
-  ['Research Candidate 30 — archived snapshot only; 100% win rate / 95 trades in 30d / 3.4h average hold; current activity unverified', '0xc4a6312a5d5af3c03d546fa287fa1f883b3db749'],
+  ['Research Candidate 29 — 95.8% win rate / 1,221 round-trips / +$725.5k all-time PnL / $7.87M recent-month volume; very high margin risk', '0x53f81d22b16ff1718ab8ee52bff0592685325f92'],
+  ['Research Candidate 30 — 95.9% win rate / 938 round-trips / +$2.71M all-time PnL / 19 open positions; recent realized profit positive, open uPnL negative', '0x1e37a337ed460039d1b15bd3bc489de789768d5e'],
 ];
 
 function parseWallets() {
