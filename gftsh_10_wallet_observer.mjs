@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-TOKEN-SHORT-WALLETS-V3.21.0-ROSTER-CLEANUP-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.22.0-TWO-RESEARCH-CANDIDATES-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -66,6 +66,8 @@ const DEFAULT_WALLETS = [
   ['Trader 26', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
   ['Trader 27', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
   ['Trader 28', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
+  ['Research Candidate 29 — 95.3% win rate / 730 round-trips / 2.3h median hold; high margin risk — verify before trusting', '0xc330a271b48461b0745879c06a933f42f0f4fc69'],
+  ['Research Candidate 30 — archived snapshot only; 100% win rate / 95 trades in 30d / 3.4h average hold; current activity unverified', '0xc4a6312a5d5af3c03d546fa287fa1f883b3db749'],
 ];
 
 function parseWallets() {
@@ -87,8 +89,8 @@ function parseWallets() {
     seen.add(normalized);
     out.push([label || `Trader #${out.length + 1}`, normalized]);
   }
-  if (out.length !== 28) {
-    throw new Error(`Expected exactly 28 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
+  if (out.length !== 30) {
+    throw new Error(`Expected exactly 30 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
   }
   return out;
 }
@@ -283,7 +285,7 @@ async function sendTelegram(message) {
 async function sendStartupStatus() {
   if (!SEND_STARTUP_STATUS) return;
   await sendTelegram([
-    '👁️ GFTSH — 28 WALLET OBSERVER',
+    '👁️ GFTSH — 30 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets: ${WALLETS.length}`,
@@ -461,7 +463,7 @@ async function main() {
 
   const runtimeSec = ((Date.now() - startedAt) / 1000).toFixed(1);
   const cycleMessage = [
-    '👁️ GFTSH — 28 WALLET OBSERVER',
+    '👁️ GFTSH — 30 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets checked successfully: ${walletsSucceeded}/${WALLETS.length}`,

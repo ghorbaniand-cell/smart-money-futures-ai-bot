@@ -1,30 +1,28 @@
-GFTSH Hyperliquid Wallet Observer — V3.21.0 (28-wallet roster update)
+GFTSH Hyperliquid Wallet Observer — V3.22.0 (30-wallet roster)
 
-Roster changes in this patch
-- Removed current V3.20 entries #29, #30 and #31.
-- Starred current V3.20 entry #26 and moved it beside the existing starred wallets at the top.
-- Preserved all other wallets. Labels are renumbered sequentially after grouping starred wallets first.
-- Final roster: 28 unique addresses.
+این بسته فهرست ۲۸ ولت نسخه V3.21 را حفظ می‌کند و دو نامزد تحقیقاتی به آن اضافه می‌کند؛ تعداد نهایی ۳۰ آدرس یکتا است.
 
-Research note
-- STRK/PONS wallet-specific evidence in the roster came from public position snapshots. Open-position PnL is not the same as realized profit, and a snapshot does not prove repeatable timing or future profitability.
-- Wallets remain observation-only candidates, not endorsements or automated-copy targets.
+دو نامزد افزوده‌شده:
+1) 0xc330a271b48461b0745879c06a933f42f0f4fc69
+   داده عمومی HyperSonnar هنگام بررسی: وین‌ریت 95.3% روی 730 round-trips، میانه هولد 2.3 ساعت، 3 پوزیشن باز. هشدار مهم: مارجین استفاده‌شده حدود 100.7% گزارش شده؛ بنابراین با وجود آمار برد، ریسک حساب بالاست و این ولت «کم‌ریسک/تأییدشده» محسوب نمی‌شود.
+2) 0xc4a6312a5d5af3c03d546fa287fa1f883b3db749
+   snapshot بایگانی‌شده در ARENA (تاریخ 2026-05-04): وین‌ریت 100%، 95 معامله در 30 روز آن snapshot، حجم 30روزه حدود $1.18M و میانگین هولد 3.4 ساعت. این داده قدیمی و پروفایل بایگانی‌شده است؛ فعالیت فعلی و تعداد پوزیشن‌های باز امروز تأیید نشده‌اند.
 
-Behavior/configuration preserved
-- Hyperliquid only; read-only. No orders and no auto-copy.
-- GitHub Actions schedule targets every 5 minutes (GitHub schedules are best-effort).
-- Entry band remains 1.00%.
-- Alerts for newly opened positions observed in the lookback window, plus open positions inside the configured entry band.
-- Same-side adds/averages are not treated as new entries; lifecycle deduplication is retained.
-- Starred wallets retain priority formatting in Telegram.
-- Exact worker filename remains gftsh_10_wallet_observer.mjs.
-- Exact workflow name remains GFTSH 10 Wallet Observer.
+محدودیت مهم تحقیق:
+هیچ منبع عمومی بررسی‌شده‌ای ثابت نکرد که این دو ولت در کل تاریخچه‌شان هرگز لیکویید نشده‌اند یا هرگز استاپ‌لاس نخورده‌اند. Win rate بالا نیز به‌تنهایی تضمین‌کننده سود یا ریسک پایین نیست. هر دو آدرس فقط نامزدهای تحقیقاتی برای رصد هستند؛ هیچ سفارشی ثبت یا کپی نمی‌شود.
 
-Install
-1. Replace gftsh_10_wallet_observer.mjs with the file in this ZIP.
-2. Replace .github/workflows/gftsh_10_wallet_observer.yml with the file in this ZIP.
-3. Ensure TELEGRAM_TOKEN and TELEGRAM_CHAT_ID are configured as GitHub Actions secrets.
-4. Leave GFTSH_WATCH_WALLETS blank/unset to use the built-in roster. If supplying a custom roster, it must contain exactly 28 unique valid addresses.
-5. Run workflow_dispatch once and inspect the run logs and Telegram delivery. Verify subsequent scheduled runs.
+تنظیمات حفظ‌شده:
+- Worker filename: gftsh_10_wallet_observer.mjs
+- Workflow name: GFTSH 10 Wallet Observer (بدون تغییر)
+- اسکن زمان‌بندی‌شده هدف: هر 5 دقیقه
+- فاصله از ورود: 1.00%
+- Hyperliquid فقط؛ READ-ONLY؛ NO ORDERS؛ NO AUTO-COPY
+- 24 ولت ستاره‌دار موجود و ترتیب قبلی آن‌ها حفظ شده است؛ دو نامزد جدید ستاره‌دار نشده‌اند.
 
-Local checks: JavaScript syntax, roster count, address format and uniqueness. This ZIP has not been installed on GitHub and has not been live-tested against Hyperliquid or Telegram.
+نصب:
+1) ZIP را استخراج کن.
+2) gftsh_10_wallet_observer.mjs و .github/workflows/gftsh_10_wallet_observer.yml را در مسیرهای هم‌نام مخزن جایگزین کن.
+3) برای استفاده از فهرست داخلی، GFTSH_WATCH_WALLETS را خالی/تنظیم‌نشده بگذار. اگر از override استفاده می‌کنی، باید دقیقاً 30 آدرس یکتا داشته باشد.
+4) از GitHub Actions یک بار workflow_dispatch اجرا کن و لاگ/پیام تلگرام را بررسی کن.
+
+اعتبارسنجی محلی لازم است؛ این بسته هنوز روی GitHub یا در اتصال زنده Hyperliquid/Telegram آزمایش نشده است.
