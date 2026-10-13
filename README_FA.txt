@@ -1,11 +1,13 @@
-GFTSH Wallet Observer — V3.17.0 (28-wallet roster)
+GFTSH Wallet Observer — V3.18.0 (30-wallet roster)
 
 Roster updates in this version:
-- Preserves all 24 entries from V3.16.
-- Adds four distinct research candidates: 0xe31501c472d557bfa145ce105d325fb2dd4cb867, 0xf9077a163e94bfd5a7266b6dd3a39c030e0d89f3, 0xe6503009ee1a648c3775b6b8444afdddb786f1a9, and 0xf179326c91d7233ae833d668c5d44c6a7d472161.
-- The last of these (0xf179326c91d7233ae833d668c5d44c6a7d472161) is starred and placed with the other starred wallets.
-- Duplicate validation confirms 28 unique, syntactically valid wallet addresses.
-- The four additions are research candidates based on public leaderboard snapshots, not proven pump/dump timing winners.
+- Removes the former roster entry #21: 0xfeec88b13fc0be31695069f02bac18538a154e9c.
+- Promotes the former #22 wallet 0xe5731d975d84c7222ebfd0ce8239f04ea3164e55 into the starred group, beside the other starred wallets.
+- Keeps the remaining 27 wallets from V3.17 and adds three research candidates, producing exactly 30 unique addresses.
+- All entries are numbered sequentially in the built-in roster; starred wallets are grouped first.
+- New research additions: 0xdb42ab87ac1f9f0d6d83dd82ff49137ab70f631d, 0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11, and 0xc330a271b48461b0745879c06a933f42f0f4fc69.
+- Public snapshots report, respectively: 70.3% win rate, 2.8h median hold and 19 open positions for 0xdb42…; 96.3% win rate and 1.4h median hold for 0xc3b1… (no open positions in that snapshot); and 95.3% win rate, 2.3h median hold and 3 open positions for 0xc330…. The 0xc3b1… profile reported about $1.69M of volume in October through its latest observed data. These are third-party snapshot metrics and may change; not every candidate satisfies every filter equally.
+- The research candidates are not proven to predict pumps/dumps or exit at trend tops. Validate their current activity and behavior before relying on alerts.
 
 Behavior:
 - Read-only monitoring: no orders and no automatic copying.
@@ -20,7 +22,7 @@ Configuration:
 1. Replace the existing worker with exact filename gftsh_10_wallet_observer.mjs.
 2. Replace .github/workflows/gftsh_10_wallet_observer.yml; workflow name remains exactly “GFTSH 10 Wallet Observer”.
 3. Ensure GitHub Actions secrets TELEGRAM_TOKEN and TELEGRAM_CHAT_ID are configured.
-4. Leave GFTSH_WATCH_WALLETS blank/unset to use the built-in 28-wallet roster. The workflow in this ZIP does not override it from repository variables. If deliberately supplying a custom roster, it must contain exactly 28 unique valid addresses.
+4. Leave GFTSH_WATCH_WALLETS blank/unset to use the built-in 30-wallet roster. The workflow in this ZIP does not override it from repository variables. If deliberately supplying a custom roster, it must contain exactly 30 unique valid addresses.
 5. Run workflow_dispatch once, inspect Telegram/API results, then verify scheduled runs.
 
-This ZIP is a local patch. It has not been installed on GitHub or tested against live Hyperliquid/Telegram APIs.
+This ZIP is a local patch. Syntax and roster checks are performed locally; it has not been installed on GitHub or tested against live Hyperliquid/Telegram APIs.

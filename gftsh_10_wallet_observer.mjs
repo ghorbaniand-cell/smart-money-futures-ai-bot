@@ -2,10 +2,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 /*
- * GFTSH — 28 WALLET LIVE FUTURES OBSERVER
+ * GFTSH — 30 WALLET LIVE FUTURES OBSERVER
  * READ ONLY | NO ORDERS | NO AUTO-COPY
  *
- * Scans 28 fixed Hyperliquid perpetual-futures accounts every 5 minutes.
+ * Scans 30 fixed Hyperliquid perpetual-futures accounts every 5 minutes.
  * Alerts:
  *  1) A newly opened position detected in recent fills (independent of entry distance).
  *  2) Any currently open position whose mark is within the configured entry band
@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-28W-LIVE-OBSERVER-V3.17.0-FOUR-RESEARCH-ADDITIONS-1PCT';
+const VERSION = 'GFTSH-30W-LIVE-OBSERVER-V3.18.0-ROSTER-REFRESH-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -38,34 +38,36 @@ const STATE_FILE = process.env.GFTSH_WATCH_STATE_FILE || 'production/state/gftsh
 const TG_STATE_FILE = process.env.GFTSH_WATCH_TELEGRAM_STATE_FILE || 'production/state/gftsh_10_wallet_telegram.json';
 
 const DEFAULT_WALLETS = [
-  ['⭐ Priority Trader 1 ⭐', '0xe2823659be02e0f48a4660e4da008b5e1abfdf29'],
-  ['⭐ Priority Trader 2 ⭐', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
-  ['⭐ Priority Trader 3 ⭐', '0x8efa981f60384083496148b55361a83edc268295'],
-  ['⭐ Priority Trader 4 ⭐', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
-  ['⭐ Priority Trader 5 ⭐', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
-  ['⭐ Priority Trader 6 ⭐', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
-  ['⭐ Priority Trader 7 ⭐', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
-  ['⭐ Priority Trader 8 ⭐', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
-  ['⭐ Priority Trader 9 ⭐', '0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a'],
-  ['⭐ Intraday Research 1 ⭐', '0x3dd462347e7b42b5a3ea15132b677a4978af7a81'],
-  ['⭐ Intraday Research 6 ⭐', '0x88250cf2f6402e856bc85fc65095e4a48bb12cb7'],
-  ['⭐ STRK Candidate 2 ⭐', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
-  ['⭐ Research Candidate 6 ⭐', '0xf179326c91d7233ae833d668c5d44c6a7d472161'],
-  ['Trader 12', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
-  ['Trader 13', '0x736850ee773ac6170fcaeda596514269b863ee56'],
-  ['Trader 14', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
-  ['Trader 15', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
-  ['Trader 16', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
-  ['Trader 17', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
-  ['Trader 18', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
-  ['Trader 19', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
-  ['Trader 20', '0xfeec88b13fc0be31695069f02bac18538a154e9c'],
-  ['Trader 21', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
-  ['Trader 22', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
-  ['Trader 23', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
-  ['Research Candidate 1', '0xe31501c472d557bfa145ce105d325fb2dd4cb867'],
-  ['Research Candidate 4', '0xf9077a163e94bfd5a7266b6dd3a39c030e0d89f3'],
-  ['Research Candidate 5', '0xe6503009ee1a648c3775b6b8444afdddb786f1a9']
+  ['⭐ Trader 1 ⭐', '0xe2823659be02e0f48a4660e4da008b5e1abfdf29'],
+  ['⭐ Trader 2 ⭐', '0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9'],
+  ['⭐ Trader 3 ⭐', '0x8efa981f60384083496148b55361a83edc268295'],
+  ['⭐ Trader 4 ⭐', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
+  ['⭐ Trader 5 ⭐', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
+  ['⭐ Trader 6 ⭐', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
+  ['⭐ Trader 7 ⭐', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
+  ['⭐ Trader 8 ⭐', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
+  ['⭐ Trader 9 ⭐', '0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a'],
+  ['⭐ Trader 10 ⭐', '0x3dd462347e7b42b5a3ea15132b677a4978af7a81'],
+  ['⭐ Trader 11 ⭐', '0x88250cf2f6402e856bc85fc65095e4a48bb12cb7'],
+  ['⭐ Trader 12 ⭐', '0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b'],
+  ['⭐ Trader 13 — Research Candidate 6 ⭐', '0xf179326c91d7233ae833d668c5d44c6a7d472161'],
+  ['⭐ Trader 14 ⭐', '0xe5731d975d84c7222ebfd0ce8239f04ea3164e55'],
+  ['Trader 15', '0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9'],
+  ['Trader 16', '0x736850ee773ac6170fcaeda596514269b863ee56'],
+  ['Trader 17', '0x95da8596c44dd09f4b8becce87ad3b7894fb2328'],
+  ['Trader 18', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
+  ['Trader 19', '0x36ac01de9bc76c0d744b38c3e13a0538d55c7568'],
+  ['Trader 20', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
+  ['Trader 21', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
+  ['Trader 22', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
+  ['Trader 23', '0xbd334a55db91617545e8d1b09941e036ad8e4200'],
+  ['Trader 24', '0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0'],
+  ['Trader 25 — Research Candidate 1', '0xe31501c472d557bfa145ce105d325fb2dd4cb867'],
+  ['Trader 26 — Research Candidate 4', '0xf9077a163e94bfd5a7266b6dd3a39c030e0d89f3'],
+  ['Trader 27 — Research Candidate 5', '0xe6503009ee1a648c3775b6b8444afdddb786f1a9'],
+  ['Trader 28 — Research Candidate — 19 open positions', '0xdb42ab87ac1f9f0d6d83dd82ff49137ab70f631d'],
+  ['Trader 29 — Research Candidate — 96% WR', '0xc3b1bf1f1e6fb8161ef4dc2f34e2c56f70b94b11'],
+  ['Trader 30 — Research Candidate — 95% WR', '0xc330a271b48461b0745879c06a933f42f0f4fc69'],
 ];
 
 function parseWallets() {
@@ -87,8 +89,8 @@ function parseWallets() {
     seen.add(normalized);
     out.push([label || `Trader #${out.length + 1}`, normalized]);
   }
-  if (out.length !== 28) {
-    throw new Error(`Expected exactly 28 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
+  if (out.length !== 30) {
+    throw new Error(`Expected exactly 30 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
   }
   return out;
 }
@@ -283,7 +285,7 @@ async function sendTelegram(message) {
 async function sendStartupStatus() {
   if (!SEND_STARTUP_STATUS) return;
   await sendTelegram([
-    '👁️ GFTSH — 28 WALLET OBSERVER',
+    '👁️ GFTSH — 30 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets: ${WALLETS.length}`,
@@ -461,7 +463,7 @@ async function main() {
 
   const runtimeSec = ((Date.now() - startedAt) / 1000).toFixed(1);
   const cycleMessage = [
-    '👁️ GFTSH — 28 WALLET OBSERVER',
+    '👁️ GFTSH — 30 WALLET OBSERVER',
     '━━━━━━━━━━━━━━━━━━',
     '📡 Status: WATCHING',
     `👥 Wallets checked successfully: ${walletsSucceeded}/${WALLETS.length}`,
