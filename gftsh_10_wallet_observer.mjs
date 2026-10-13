@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-31W-LIVE-OBSERVER-V3.24.0-STARRED-ADDITIONS-1PCT';
+const VERSION = 'GFTSH-31W-LIVE-OBSERVER-V3.25.0-STARRED-GROUPED-1PCT';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -62,13 +62,13 @@ const DEFAULT_WALLETS = [
   ['⭐ Trader 22 ⭐ — STRK short candidate — large profitable open short', '0x8af700ba841f30e0a3fcb0ee4c4a9d223e1efa05'],
   ['⭐ Trader 23 ⭐ — STRK short candidate — profitable open short', '0x7717a7a245d9f950e586822b8c9b46863ed7bd7e'],
   ['⭐ Trader 24 ⭐', '0x1081e214bd6f0137234b92432d9b6033b88965b7'],
-  ['Trader 25', '0x736850ee773ac6170fcaeda596514269b863ee56'],
   ['⭐ Trader 26 ⭐ — recent-activity research candidate', '0x4bafc8eca50fc3208fb2520a2a49980768ec60f6'],
+  ['⭐ Trader 31 ⭐ — high reported win rate / +$956k all-time PnL / positive reported open uPnL; verify current live positions', '0xd142479997958a4fefd1f8d5373b31ce36987d73'],
+  ['Trader 25', '0x736850ee773ac6170fcaeda596514269b863ee56'],
   ['Trader 27', '0x24555b39d91e53c4c7811219ece75b15fd9eabc3'],
   ['Trader 28', '0xde0e9b1a35322a809165d09f0490cca3fa7562e5'],
   ['Research Candidate 29 — 95.8% win rate / 1,221 round-trips / +$725.5k all-time PnL / $7.87M recent-month volume; very high margin risk', '0x53f81d22b16ff1718ab8ee52bff0592685325f92'],
-  ['Research Candidate 30 — 95.9% win rate / 938 round-trips / +$2.71M all-time PnL / 19 open positions; recent realized profit positive, open uPnL negative', '0x1e37a337ed460039d1b15bd3bc489de789768d5e'],
-  ['⭐ Trader 31 ⭐ — high reported win rate / +$956k all-time PnL / positive reported open uPnL; verify current live positions', '0xd142479997958a4fefd1f8d5373b31ce36987d73'],
+  ['Research Candidate 30 — 95.9% win rate / 938 round-trips / +$2.71M all-time PnL / 19 open positions; recent realized profit positive, open uPnL negative', '0x1e37a337ed460039d1b15bd3bc489de789768d5e']
 ];
 
 function parseWallets() {

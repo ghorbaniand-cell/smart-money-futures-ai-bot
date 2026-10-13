@@ -1,4 +1,4 @@
-GFTSH Hyperliquid Wallet Observer — V3.24.0 (31-wallet roster; starred additions)
+GFTSH Hyperliquid Wallet Observer — V3.25.0 (31-wallet roster; starred additions)
 
 این نسخه هیچ آدرس قبلی را حذف یا جایگزین نمی‌کند. آدرس 0x4bafc8eca50fc3208fb2520a2a49980768ec60f6 که قبلاً در فهرست بود، اکنون ستاره‌دار شده است؛ آدرس 0xd142479997958a4fefd1f8d5373b31ce36987d73 نیز به‌عنوان ولت ستاره‌دار جدید اضافه شده است. تعداد نهایی ۳۱ آدرس یکتا است.
 
