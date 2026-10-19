@@ -296,10 +296,91 @@ async function sendStartupStatus() {
   ].join('\n'));
 }
 
+
+function formatPerformanceReport(performanceByWallet, now) {
+  const rows = [...performanceByWallet.values()].map(p => {
+    const decided = p.wins + p.losses;
+    const winRate = decided > 0 ? (p.wins / decided) * 100 : null;
+    const roi = p.closedNotional > 0 ? (p.realizedPnl / p.closedNotional) * 100 : null;
+    return { ...p, decided, winRate, roi };
+  }).filter(p => p.entryFills > 0 || p.closeFills > 0)
+    .sort((a, b) => b.realizedPnl - a.realizedPnl || b.entryFills - a.entryFills);
+
+  const totalEntries = rows.reduce((sum, r) => sum + r.entryFills, 0);
+  const totalPnl = rows.reduce((sum, r) => sum + r.realizedPnl, 0);
+  const totalCloseFills = rows.reduce((sum, r) => sum + r.closeFills, 0);
+  const totalWins = rows.reduce((sum, r) => sum + r.wins, 0);
+  const totalLosses = rows.reduce((sum, r) => sum + r.losses, 0);
+  const totalMissingPnl = rows.reduce((sum, r) => sum + r.missingPnl, 0);
+  const totalDecided = totalWins + totalLosses;
+  const overallWinRate = totalDecided ? totalWins / totalDecided * 100 : null;
+  const money = n => `${n < 0 ? '-' : ''}$${Math.abs(n).toFixed(2)}`;
+  const pct = n => n === null ? 'N/A' : `${n.toFixed(1)}%`;
+  const date = new Date(now).toISOString().slice(0, 10);
+
+  const lines = [
+    '📊 GFTSH — 24H WALLET PERFORMANCE',
+    '━━━━━━━━━━━━━━━━━━',
+    `📅 Period ending (UTC): ${new Date(now).toISOString()}`,
+    `👥 Active wallets in this period: ${rows.length}/28`,
+    `🚪 New position entries detected: ${totalEntries}`,
+    '📌 Only wallets with entries/closes are listed; inactive wallets do not block the report.',
+    '📌 Ranking by realized PnL from closes; win rate is based on closed fills with recorded PnL.',
+    '',
+    'Rank | Wallet | Entries | W/L | Win% | Realized PnL | ROI*',
+    '━━━━━━━━━━━━━━━━━━'
+  ];
+  rows.forEach((r, i) => {
+    const label = String(r.trader || `Trader ${i + 1}`).replace(/\s+/g, ' ').slice(0, 30);
+    lines.push(
+      `${i + 1}. ${label}`,
+      `New entries: ${r.entryFills} | W/L closes: ${r.wins}/${r.losses} | Win rate: ${pct(r.winRate)}`,
+      `PnL: ${money(r.realizedPnl)} | ROI*: ${pct(r.roi)}`,
+      `Close fills: ${r.closeFills} | Missing PnL: ${r.missingPnl}`,
+      ''
+    );
+  });
+  lines.push(
+    '━━━━━━━━━━━━━━━━━━',
+    `💵 Total realized PnL: ${money(totalPnl)}`,
+    `🎯 Overall fill win rate: ${pct(overallWinRate)}`,
+    `🚪 New position entries: ${totalEntries}`,
+    `📦 Closing fills: ${totalCloseFills}`,
+    `⚠️ Closing fills without PnL: ${totalMissingPnl}`,
+    '',
+    '*ROI = realized PnL / closing-fill notional; approximate, not account ROI.',
+    'Win rate counts fills with recorded non-zero PnL, not independent trades.',
+    'Open-position unrealized PnL is excluded; this is a private GFTSH report.',
+    '🛡 READ-ONLY | NO ORDERS | NO AUTO-COPY'
+  );
+  return lines;
+}
+
+async function sendPerformanceReport(performanceByWallet, now) {
+  const lines = formatPerformanceReport(performanceByWallet, now);
+  const chunks = [];
+  let chunk = '';
+  for (const line of lines) {
+    const candidate = chunk ? `${chunk}\n${line}` : line;
+    if (candidate.length > TELEGRAM_MAX - 100) {
+      if (chunk) chunks.push(chunk);
+      chunk = line;
+    } else chunk = candidate;
+  }
+  if (chunk) chunks.push(chunk);
+  for (let i = 0; i < chunks.length; i++) {
+    const suffix = chunks.length > 1 ? `\n\n📄 Part ${i + 1}/${chunks.length}` : '';
+    const result = await sendTelegram(chunks[i] + suffix);
+    if (!result.sent) throw new Error('Telegram destination not configured; report not sent');
+  }
+}
+
 async function main() {
   const startedAt = Date.now();
   const now = Date.now();
   const startTime = Math.max(0, now - LOOKBACK_MIN * 60_000);
+  // Performance history is independent from the shorter alert lookback.
+  const performanceStartTime = Math.max(0, now - 24 * 60 * 60_000);
   console.log(`\n${VERSION}`);
   console.log('READ-ONLY | NO ORDERS | NO AUTO-COPY | FUTURES ONLY');
   console.log(`Watching ${WALLETS.length} wallets every ${SCAN_INTERVAL_MIN} minutes; entry band ${ENTRY_BAND_PCT.toFixed(2)}%.`);
@@ -328,6 +409,7 @@ async function main() {
   const openDedupe = new Set(state.alertedOpenPositionKeys.map(String));
   const fillDedupe = new Set(state.alertedNewEntryFillKeys.map(String));
   const alerts = [];
+  const performanceByWallet = new Map();
   let walletsSucceeded = 0, walletErrors = 0, positionsChecked = 0;
   let inBand = 0, outsideBand = 0, alreadyAlerted = 0, averagingIgnored = 0;
   let alertSendErrors = 0, alertsSent = 0, newEntryCount = 0;
@@ -336,10 +418,46 @@ async function main() {
     try {
       const [currentState, fills] = await Promise.all([
         fetchCurrentState(address),
-        fetchFills(address, startTime, now)
+        fetchFills(address, performanceStartTime, now)
       ]);
       const positions = extractPositions(currentState);
-      const sortedFills = fills.slice().sort((a, b) => num(a.time) - num(b.time));
+
+      // Build a 24-hour realized-performance summary from Hyperliquid fills.
+      // Keep fills without closedPnl visible as missing data; never guess their PnL.
+      const perf = {
+        trader, address, entryFills: 0, entryNotional: 0,
+        closeFills: 0, wins: 0, losses: 0, breakeven: 0,
+        realizedPnl: 0, closedNotional: 0, missingPnl: 0
+      };
+      for (const fill of fills) {
+        const fillTime = num(fill?.time);
+        if (fillTime < performanceStartTime || fillTime > now) continue;
+        const dir = String(fill?.dir || '').toLowerCase();
+        if (isNewPositionFill(fill)) {
+          perf.entryFills++;
+          perf.entryNotional += notional(fill);
+        }
+        const hasClosedPnl = fill?.closedPnl !== undefined &&
+          fill?.closedPnl !== null && Number.isFinite(Number(fill.closedPnl));
+        const isCloseFill = dir.includes('close') || dir.includes('closing') || hasClosedPnl;
+        if (!isCloseFill) continue;
+        perf.closeFills++;
+        perf.closedNotional += notional(fill);
+        if (!hasClosedPnl) { perf.missingPnl++; continue; }
+        const pnl = Number(fill.closedPnl);
+        perf.realizedPnl += pnl;
+        if (pnl > 0) perf.wins++;
+        else if (pnl < 0) perf.losses++;
+        else perf.breakeven++;
+      }
+      performanceByWallet.set(address, perf);
+
+      // Alert logic remains on the configured short lookback, not the 24h report window.
+      const recentFills = fills.filter(fill => {
+        const t = num(fill?.time);
+        return t >= startTime && t <= now;
+      });
+      const sortedFills = recentFills.slice().sort((a, b) => num(a.time) - num(b.time));
       const currentKeys = new Set();
       const newEntrySidesThisCycle = new Set();
 
@@ -485,6 +603,24 @@ async function main() {
   ].join('\n');
   try { await sendTelegram(cycleMessage); }
   catch (error) { console.error(`[TELEGRAM][CYCLE-ERROR] ${error?.message || error}`); }
+
+  // Send every 24 elapsed hours (not merely once per UTC calendar date).
+  // Wallets with zero trades are normal and never block the report; API coverage
+  // must still be complete so a failed request is not misreported as zero activity.
+  const lastPerformanceReportAt = num(tgState.lastPerformanceReportAt);
+  const reportDue = !lastPerformanceReportAt || (now - lastPerformanceReportAt >= 24 * 60 * 60_000);
+  if (reportDue && walletsSucceeded === WALLETS.length) {
+    try {
+      await sendPerformanceReport(performanceByWallet, now);
+      tgState.lastPerformanceReportAt = now;
+      tgState.lastPerformanceReportDate = new Date(now).toISOString().slice(0, 10);
+      console.log(`[PERFORMANCE-REPORT] sent at=${new Date(now).toISOString()} activeWallets=${[...performanceByWallet.values()].filter(p => p.entryFills > 0 || p.closeFills > 0).length}`);
+    } catch (error) {
+      console.error(`[PERFORMANCE-REPORT][ERROR] ${error?.message || error}`);
+    }
+  } else if (reportDue && walletsSucceeded !== WALLETS.length) {
+    console.log(`[PERFORMANCE-REPORT][SKIPPED] API coverage incomplete ${walletsSucceeded}/${WALLETS.length}; will retry next cycle`);
+  }
 
   tgState.lastCycleAt = now;
   tgState.lastCycleAlerts = alertsSent;
