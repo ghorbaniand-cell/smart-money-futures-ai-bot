@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792535547630,
+  "lastScanAt": 1792537282912,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9935,7 +9935,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WIF|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|NEAR|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|WLFI|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WLD|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|BIO|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|BNB|LONG",
@@ -9955,7 +9954,6 @@
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|SUI|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|UMA|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|REZ|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NEAR|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|SOL|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|ENA|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT",
@@ -9963,20 +9961,33 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NEO|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NIL|LONG",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|PAXG|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|VVV|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|VVV|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NEAR|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 35597,
+  "lastRuntimeMs": 36421,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
       "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
       "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "VVV",
+      "coin": "NEAR",
       "side": "SHORT",
-      "entry": 25.8364,
-      "current": 25.771,
-      "distancePct": 0.253131241194595,
+      "entry": 4.93379,
+      "current": 4.92955,
+      "distancePct": 0.08593799087517393,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "AVNT",
+      "side": "SHORT",
+      "entry": 0.11412,
+      "current": 0.113485,
+      "distancePct": 0.5564318261479115,
       "fillTime": null
     }
   ],
