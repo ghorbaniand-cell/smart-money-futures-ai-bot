@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792505553417,
+  "lastScanAt": 1792505969114,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9959,86 +9959,21 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|BNB|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|UMA|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PUMP|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT",
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ETH|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 33745,
+  "lastRuntimeMs": 35019,
   "lastAlerts": [
     {
-      "alertType": "NEW_ENTRY",
-      "trader": "⭐ Trader 19 ⭐",
-      "address": "0xe31501c472d557bfa145ce105d325fb2dd4cb867",
-      "coin": "xyz:NET",
-      "side": "SHORT",
-      "entry": 292.38,
-      "current": 0,
-      "distancePct": null,
-      "fillTime": 1792504875799
-    },
-    {
-      "alertType": "NEW_ENTRY",
-      "trader": "⭐ Trader 19 ⭐",
-      "address": "0xe31501c472d557bfa145ce105d325fb2dd4cb867",
-      "coin": "xyz:EWT",
-      "side": "SHORT",
-      "entry": 106.81,
-      "current": 0,
-      "distancePct": null,
-      "fillTime": 1792505151497
-    },
-    {
-      "alertType": "NEW_ENTRY",
-      "trader": "⭐ Trader 19 ⭐",
-      "address": "0xe31501c472d557bfa145ce105d325fb2dd4cb867",
-      "coin": "xyz:IREN",
-      "side": "SHORT",
-      "entry": 26.493,
-      "current": 0,
-      "distancePct": null,
-      "fillTime": 1792505234817
-    },
-    {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "BNB",
-      "side": "LONG",
-      "entry": 740.716,
-      "current": 739.05,
-      "distancePct": 0.22491751224491624,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "UMA",
+      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
+      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
+      "coin": "ETH",
       "side": "SHORT",
-      "entry": 0.38463,
-      "current": 0.38685,
-      "distancePct": 0.577178067233445,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "PUMP",
-      "side": "SHORT",
-      "entry": 0.004643,
-      "current": 0.004632,
-      "distancePct": 0.23691578720656023,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "ZEC",
-      "side": "SHORT",
-      "entry": 1221.2587,
-      "current": 1227.2,
-      "distancePct": 0.4864898813003301,
+      "entry": 2481.04,
+      "current": 2461.55,
+      "distancePct": 0.7855576693644513,
       "fillTime": null
     }
   ],
