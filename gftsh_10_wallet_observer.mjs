@@ -5,7 +5,7 @@ import path from 'node:path';
  * GFTSH — TOKEN SHORT-WALLET LIVE FUTURES OBSERVER
  * READ ONLY | NO ORDERS | NO AUTO-COPY
  *
- * Scans 28 selected Hyperliquid perpetual-futures accounts every 5 minutes.
+ * Scans 27 selected Hyperliquid perpetual-futures accounts every 5 minutes; Trader 6 removed by user request.
  * Alerts:
  *  1) A newly opened position detected in recent fills (independent of entry distance).
  *  2) Any currently open position whose mark is within the configured entry band
@@ -18,7 +18,7 @@ import path from 'node:path';
  * not endorsements or automated-copy targets.
  */
 
-const VERSION = 'GFTSH-28W-LIVE-OBSERVER-V3.26.0-REMOVE-27-29-30-RENUMBERED-1PCT';
+const VERSION = 'GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS';
 const API = process.env.HYPERLIQUID_API_URL || 'https://api.hyperliquid.xyz/info';
 const TG_TOKEN = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '';
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
@@ -43,7 +43,6 @@ const DEFAULT_WALLETS = [
   ['⭐ Trader 3 ⭐', '0x8efa981f60384083496148b55361a83edc268295'],
   ['⭐ Trader 4 ⭐', '0x8bae3527e5a33fa0cf184f37bc112d071463ab6d'],
   ['⭐ Trader 5 ⭐', '0x53f8f390fd4f70941c5d160a964f6893c8dbceff'],
-  ['⭐ Trader 6 ⭐', '0xf9faba57a81d1575d3e506dd3eafe7db6f2a3275'],
   ['⭐ Trader 7 ⭐', '0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688'],
   ['⭐ Trader 8 ⭐', '0xce508465b243216fcf372d3146fd62e8f7a7b8e2'],
   ['⭐ Trader 9 ⭐', '0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a'],
@@ -87,8 +86,8 @@ function parseWallets() {
     seen.add(normalized);
     out.push([label || `Trader #${out.length + 1}`, normalized]);
   }
-  if (out.length !== 28) {
-    throw new Error(`Expected exactly 28 unique valid wallet addresses; got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
+  if (out.length !== 27) {
+    throw new Error(`Expected exactly 27 unique valid wallet addresses (Trader 6 removed); got ${out.length}. Check GFTSH_WATCH_WALLETS.`);
   }
   return out;
 }
@@ -298,59 +297,56 @@ async function sendStartupStatus() {
 
 
 function formatPerformanceReport(performanceByWallet, now) {
-  const rows = [...performanceByWallet.values()].map(p => {
-    const decided = p.wins + p.losses;
-    const winRate = decided > 0 ? (p.wins / decided) * 100 : null;
-    const roi = p.closedNotional > 0 ? (p.realizedPnl / p.closedNotional) * 100 : null;
-    return { ...p, decided, winRate, roi };
-  }).filter(p => p.entryFills > 0 || p.closeFills > 0)
-    .sort((a, b) => b.realizedPnl - a.realizedPnl || b.entryFills - a.entryFills);
-
-  const totalEntries = rows.reduce((sum, r) => sum + r.entryFills, 0);
-  const totalPnl = rows.reduce((sum, r) => sum + r.realizedPnl, 0);
-  const totalCloseFills = rows.reduce((sum, r) => sum + r.closeFills, 0);
-  const totalWins = rows.reduce((sum, r) => sum + r.wins, 0);
-  const totalLosses = rows.reduce((sum, r) => sum + r.losses, 0);
-  const totalMissingPnl = rows.reduce((sum, r) => sum + r.missingPnl, 0);
-  const totalDecided = totalWins + totalLosses;
-  const overallWinRate = totalDecided ? totalWins / totalDecided * 100 : null;
+  const all = [...performanceByWallet.values()];
   const money = n => `${n < 0 ? '-' : ''}$${Math.abs(n).toFixed(2)}`;
-  const pct = n => n === null ? 'N/A' : `${n.toFixed(1)}%`;
-  const date = new Date(now).toISOString().slice(0, 10);
-
+  const pct = n => n === null || !Number.isFinite(n) ? 'N/A' : `${n.toFixed(1)}%`;
+  const decided = p => p.wins + p.losses;
+  const winRate = p => decided(p) > 0 ? p.wins / decided(p) * 100 : null;
+  const roi = p => p.closedNotional > 0 ? p.realizedPnl / p.closedNotional * 100 : null;
+  const active24h = all.filter(p => p.entryFills > 0 || p.closeFills > 0);
+  const byEntries = [...active24h].sort((a,b) => b.entryFills-a.entryFills || b.pnl24h-a.pnl24h);
+  const byPnl24 = [...active24h].filter(p => p.closeFills > 0).sort((a,b) => b.pnl24h-a.pnl24h);
+  const byHistory = [...all].filter(p => p.historyCloseFills > 0).sort((a,b) => b.historyPnl-a.historyPnl);
+  const sum = (arr, key) => arr.reduce((n,p) => n + (Number(p[key]) || 0), 0);
+  const wins24 = sum(active24h,'wins'), losses24 = sum(active24h,'losses');
+  const totalPnl24 = sum(active24h,'pnl24h');
+  const totalClose24 = sum(active24h,'closeFills');
+  const totalEntries = sum(active24h,'entryFills');
+  const totalMissing24 = sum(active24h,'missingPnl');
+  const totalHistPnl = sum(all,'historyPnl');
+  const totalHistClose = sum(all,'historyCloseFills');
   const lines = [
-    '📊 GFTSH — 24H WALLET PERFORMANCE',
+    '📊 GFTSH — 24H PERFORMANCE + 30D CONTEXT',
     '━━━━━━━━━━━━━━━━━━',
-    `📅 Period ending (UTC): ${new Date(now).toISOString()}`,
-    `👥 Active wallets in this period: ${rows.length}/28`,
-    `🚪 New position entries detected: ${totalEntries}`,
-    '📌 Only wallets with entries/closes are listed; inactive wallets do not block the report.',
-    '📌 Ranking by realized PnL from closes; win rate is based on closed fills with recorded PnL.',
+    `📅 24H period (UTC): ${new Date(now - 24*60*60_000).toISOString()} → ${new Date(now).toISOString()}`,
+    `👥 Wallets with entries/closes in 24h: ${active24h.length}/28`,
+    `🚪 New position entries in 24h: ${totalEntries}`,
+    `💵 Realized PnL from closes in 24h: ${money(totalPnl24)}`,
+    '📌 Inactive wallets do not block the report. 24h and 30d metrics are separated.',
     '',
-    'Rank | Wallet | Entries | W/L | Win% | Realized PnL | ROI*',
+    '🏃 MOST ACTIVE — NEW ENTRIES (24H)',
     '━━━━━━━━━━━━━━━━━━'
   ];
-  rows.forEach((r, i) => {
-    const label = String(r.trader || `Trader ${i + 1}`).replace(/\s+/g, ' ').slice(0, 30);
-    lines.push(
-      `${i + 1}. ${label}`,
-      `New entries: ${r.entryFills} | W/L closes: ${r.wins}/${r.losses} | Win rate: ${pct(r.winRate)}`,
-      `PnL: ${money(r.realizedPnl)} | ROI*: ${pct(r.roi)}`,
-      `Close fills: ${r.closeFills} | Missing PnL: ${r.missingPnl}`,
-      ''
-    );
-  });
+  if (!byEntries.length) lines.push('No new entries or closes detected in the 24h period.');
+  byEntries.forEach((p,i) => lines.push(`${i+1}. ${p.trader}`, `New entries: ${p.entryFills} | 24h closes: ${p.closeFills} | 24h PnL: ${money(p.pnl24h)}`));
+  lines.push('', '💰 BEST REALIZED PnL — CLOSED FILLS IN 24H', '━━━━━━━━━━━━━━━━━━');
+  if (!byPnl24.length) lines.push('No closing fills detected in the 24h period.');
+  byPnl24.forEach((p,i) => lines.push(`${i+1}. ${p.trader}`, `24h PnL: ${money(p.pnl24h)} | W/L fills: ${p.wins}/${p.losses} | Win rate: ${pct(winRate(p))}`, `Close fills: ${p.closeFills} | ROI*: ${pct(p.closedNotional > 0 ? p.pnl24h/p.closedNotional*100 : null)} | Missing PnL: ${p.missingPnl}`));
+  lines.push('', '📚 HISTORICAL CONTEXT — LAST 30 DAYS / AVAILABLE SAMPLE', '━━━━━━━━━━━━━━━━━━');
+  if (!byHistory.length) lines.push('No historical closing fills available.');
+  byHistory.forEach((p,i) => lines.push(`${i+1}. ${p.trader}`, `30d/sample PnL: ${money(p.historyPnl)} | Close fills: ${p.historyCloseFills} | W/L: ${p.historyWins}/${p.historyLosses} | Win rate: ${pct(p.historyWins+p.historyLosses ? p.historyWins/(p.historyWins+p.historyLosses)*100 : null)}`));
   lines.push(
-    '━━━━━━━━━━━━━━━━━━',
-    `💵 Total realized PnL: ${money(totalPnl)}`,
-    `🎯 Overall fill win rate: ${pct(overallWinRate)}`,
-    `🚪 New position entries: ${totalEntries}`,
-    `📦 Closing fills: ${totalCloseFills}`,
-    `⚠️ Closing fills without PnL: ${totalMissingPnl}`,
+    '', '━━━━━━━━━━━━━━━━━━',
+    `💵 Total realized PnL (24h closes): ${money(totalPnl24)}`,
+    `🎯 24h fill win rate: ${pct(wins24+losses24 ? wins24/(wins24+losses24)*100 : null)}`,
+    `🚪 New entries (24h): ${totalEntries}`,
+    `📦 Closing fills (24h): ${totalClose24}`,
+    `⚠️ Closing fills without PnL (24h): ${totalMissing24}`,
+    `📚 30d/sample realized PnL: ${money(totalHistPnl)} | closing fills: ${totalHistClose}`,
     '',
     '*ROI = realized PnL / closing-fill notional; approximate, not account ROI.',
-    'Win rate counts fills with recorded non-zero PnL, not independent trades.',
-    'Open-position unrealized PnL is excluded; this is a private GFTSH report.',
+    'Win rate is per fill, not independent reconstructed trades. 24h PnL includes fills closed during the period; positions still open are excluded.',
+    '30d history may be limited by the Hyperliquid API response cap; it is labelled context, not a guaranteed complete 30-day ledger.',
     '🛡 READ-ONLY | NO ORDERS | NO AUTO-COPY'
   );
   return lines;
@@ -381,6 +377,9 @@ async function main() {
   const startTime = Math.max(0, now - LOOKBACK_MIN * 60_000);
   // Performance history is independent from the shorter alert lookback.
   const performanceStartTime = Math.max(0, now - 24 * 60 * 60_000);
+  // Separate longer-term context from the strict 24-hour scorecard. Hyperliquid's
+  // fills endpoint may cap results, so history is explicitly labelled 30-day/sample.
+  const historyStartTime = Math.max(0, now - 30 * 24 * 60 * 60_000);
   console.log(`\n${VERSION}`);
   console.log('READ-ONLY | NO ORDERS | NO AUTO-COPY | FUTURES ONLY');
   console.log(`Watching ${WALLETS.length} wallets every ${SCAN_INTERVAL_MIN} minutes; entry band ${ENTRY_BAND_PCT.toFixed(2)}%.`);
@@ -416,9 +415,11 @@ async function main() {
 
   for (const [trader, address] of WALLETS) {
     try {
-      const [currentState, fills] = await Promise.all([
+      const [currentState, recentFills, historyFills] = await Promise.all([
         fetchCurrentState(address),
-        fetchFills(address, performanceStartTime, now)
+        // Independent 24h request protects the daily scorecard from a 30d API cap.
+        fetchFills(address, performanceStartTime, now),
+        fetchFills(address, historyStartTime, now)
       ]);
       const positions = extractPositions(currentState);
 
@@ -427,16 +428,18 @@ async function main() {
       const perf = {
         trader, address, entryFills: 0, entryNotional: 0,
         closeFills: 0, wins: 0, losses: 0, breakeven: 0,
-        realizedPnl: 0, closedNotional: 0, missingPnl: 0
+        pnl24h: 0, closedNotional: 0, missingPnl: 0,
+        historyCloseFills: 0, historyWins: 0, historyLosses: 0, historyPnl: 0
       };
-      for (const fill of fills) {
+      // Strict 24-hour metrics use their own API query, never the longer history sample.
+      for (const fill of recentFills) {
         const fillTime = num(fill?.time);
         if (fillTime < performanceStartTime || fillTime > now) continue;
-        const dir = String(fill?.dir || '').toLowerCase();
         if (isNewPositionFill(fill)) {
           perf.entryFills++;
           perf.entryNotional += notional(fill);
         }
+        const dir = String(fill?.dir || '').toLowerCase();
         const hasClosedPnl = fill?.closedPnl !== undefined &&
           fill?.closedPnl !== null && Number.isFinite(Number(fill.closedPnl));
         const isCloseFill = dir.includes('close') || dir.includes('closing') || hasClosedPnl;
@@ -445,19 +448,35 @@ async function main() {
         perf.closedNotional += notional(fill);
         if (!hasClosedPnl) { perf.missingPnl++; continue; }
         const pnl = Number(fill.closedPnl);
-        perf.realizedPnl += pnl;
+        perf.pnl24h += pnl;
         if (pnl > 0) perf.wins++;
         else if (pnl < 0) perf.losses++;
         else perf.breakeven++;
       }
+      // Longer-term context is calculated separately and explicitly labelled 30d/sample.
+      for (const fill of historyFills) {
+        const fillTime = num(fill?.time);
+        if (fillTime < historyStartTime || fillTime > now) continue;
+        const dir = String(fill?.dir || '').toLowerCase();
+        const hasClosedPnl = fill?.closedPnl !== undefined &&
+          fill?.closedPnl !== null && Number.isFinite(Number(fill.closedPnl));
+        const isCloseFill = dir.includes('close') || dir.includes('closing') || hasClosedPnl;
+        if (!isCloseFill) continue;
+        perf.historyCloseFills++;
+        if (!hasClosedPnl) continue;
+        const pnl = Number(fill.closedPnl);
+        perf.historyPnl += pnl;
+        if (pnl > 0) perf.historyWins++;
+        else if (pnl < 0) perf.historyLosses++;
+      }
       performanceByWallet.set(address, perf);
 
       // Alert logic remains on the configured short lookback, not the 24h report window.
-      const recentFills = fills.filter(fill => {
+      const alertFills = recentFills.filter(fill => {
         const t = num(fill?.time);
         return t >= startTime && t <= now;
       });
-      const sortedFills = recentFills.slice().sort((a, b) => num(a.time) - num(b.time));
+      const sortedFills = alertFills.slice().sort((a, b) => num(a.time) - num(b.time));
       const currentKeys = new Set();
       const newEntrySidesThisCycle = new Set();
 
