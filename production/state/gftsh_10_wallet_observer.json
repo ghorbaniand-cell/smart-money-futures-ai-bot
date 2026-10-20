@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792520017810,
+  "lastScanAt": 1792522520354,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9964,53 +9964,8 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 29359,
-  "lastAlerts": [
-    {
-      "alertType": "NEW_ENTRY",
-      "trader": "⭐ Trader 19 ⭐",
-      "address": "0xe31501c472d557bfa145ce105d325fb2dd4cb867",
-      "coin": "xyz:CVX",
-      "side": "LONG",
-      "entry": 222.56,
-      "current": 0,
-      "distancePct": null,
-      "fillTime": 1792518902769
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "UMA",
-      "side": "LONG",
-      "entry": 0.3874,
-      "current": 0.38551,
-      "distancePct": 0.4878678368611261,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "REZ",
-      "side": "SHORT",
-      "entry": 0.003849,
-      "current": 0.003812,
-      "distancePct": 0.9612886464016664,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "ZEC",
-      "side": "SHORT",
-      "entry": 1218.4774,
-      "current": 1217.45,
-      "distancePct": 0.08431834681545536,
-      "fillTime": null
-    }
-  ],
+  "lastRuntimeMs": 36898,
+  "lastAlerts": [],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
