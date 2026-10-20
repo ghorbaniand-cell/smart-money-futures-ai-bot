@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792512352519,
+  "lastScanAt": 1792514240529,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9962,7 +9962,7 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|XMR|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 33969,
+  "lastRuntimeMs": 36935,
   "lastAlerts": [
     {
       "alertType": "NEW_ENTRY",
@@ -9970,65 +9970,10 @@
       "address": "0xe31501c472d557bfa145ce105d325fb2dd4cb867",
       "coin": "xyz:MAGS",
       "side": "LONG",
-      "entry": 72.137,
+      "entry": 72.117,
       "current": 0,
       "distancePct": null,
-      "fillTime": 1792511887007
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "INJ",
-      "side": "SHORT",
-      "entry": 8.6789,
-      "current": 8.663,
-      "distancePct": 0.18320294046480828,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "PENDLE",
-      "side": "SHORT",
-      "entry": 2.141167,
-      "current": 2.133,
-      "distancePct": 0.3814275112590384,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "PYTH",
-      "side": "SHORT",
-      "entry": 0.07551,
-      "current": 0.076104,
-      "distancePct": 0.7866507747318384,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "MANTA",
-      "side": "SHORT",
-      "entry": 0.06531,
-      "current": 0.06576,
-      "distancePct": 0.6890215893431205,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "XMR",
-      "side": "SHORT",
-      "entry": 624.83,
-      "current": 621.225,
-      "distancePct": 0.5769569322855845,
-      "fillTime": null
+      "fillTime": 1792514227018
     }
   ],
   "alertedNewEntryFillKeys": [
@@ -10488,6 +10433,7 @@
     "0xe31501c472d557bfa145ce105d325fb2dd4cb867|fill|35911059407094",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|214502613597650",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|812820267302159",
-    "0xe31501c472d557bfa145ce105d325fb2dd4cb867|fill|908326017605502"
+    "0xe31501c472d557bfa145ce105d325fb2dd4cb867|fill|908326017605502",
+    "0xe31501c472d557bfa145ce105d325fb2dd4cb867|fill|330401648680226"
   ]
 }
