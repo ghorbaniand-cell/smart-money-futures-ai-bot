@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792601697299,
+  "lastScanAt": 1792603336017,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9840,7 +9840,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|GRIFFAIN|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|YGG|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|FET|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ASTER|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|OP|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ALGO|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|LAYER|LONG",
@@ -9961,11 +9960,24 @@
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|ZEC|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ICP|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|GRAM|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|GRAM|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ASTER|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 31315,
-  "lastAlerts": [],
+  "lastRuntimeMs": 40427,
+  "lastAlerts": [
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "ASTER",
+      "side": "SHORT",
+      "entry": 0.722518,
+      "current": 0.722225,
+      "distancePct": 0.040552622910430984,
+      "fillTime": null
+    }
+  ],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
