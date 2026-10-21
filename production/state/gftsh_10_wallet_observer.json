@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792586313616,
+  "lastScanAt": 1792588945242,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9848,7 +9848,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ALGO|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|LAYER|LONG",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|W|SHORT",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|STRK|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SOPH|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|AVAX|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKR|LONG",
@@ -9863,23 +9862,14 @@
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|DOGE|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|APE|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SPX|LONG",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|CHIP|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|HBAR|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|kLUNC|SHORT",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|ZRO|LONG",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|XPL|SHORT",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|PONS|LONG",
     "0x19f5c3bc2e0978d9a1da389d7d4cfe33cd770fe9|PUMP|LONG",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|PUMP|LONG",
     "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|HYPE|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|FIL|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|BSV|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ICP|LONG",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|SUI|LONG",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|LINK|LONG",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|ENA|LONG",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|ZEC|LONG",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|ONDO|LONG",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|MON|SHORT",
     "0x8af700ba841f30e0a3fcb0ee4c4a9d223e1efa05|ZEC|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|HYPER|LONG",
@@ -9967,11 +9957,58 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|INJ|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|SHORT",
     "0xce508465b243216fcf372d3146fd62e8f7a7b8e2|XMR|LONG",
-    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|BTC|SHORT"
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|BTC|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MINA|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|XMR|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 33168,
-  "lastAlerts": [],
+  "lastRuntimeMs": 39089,
+  "lastAlerts": [
+    {
+      "alertType": "NEW_ENTRY",
+      "trader": "⭐ Trader 12 ⭐",
+      "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
+      "coin": "STRK",
+      "side": "LONG",
+      "entry": 0.05735,
+      "current": 0.05741,
+      "distancePct": 0.10462074978204794,
+      "fillTime": 1792588401576
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "MINA",
+      "side": "LONG",
+      "entry": 0.075999,
+      "current": 0.075287,
+      "distancePct": 0.9368544322951491,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "XMR",
+      "side": "SHORT",
+      "entry": 598.18,
+      "current": 599.475,
+      "distancePct": 0.2164900197265159,
+      "fillTime": null
+    },
+    {
+      "alertType": "NEW_ENTRY",
+      "trader": "Trader 28",
+      "address": "0xde0e9b1a35322a809165d09f0490cca3fa7562e5",
+      "coin": "xyz:JPY",
+      "side": "LONG",
+      "entry": 157.85,
+      "current": 0,
+      "distancePct": null,
+      "fillTime": 1792588157401
+    }
+  ],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
@@ -10441,6 +10478,7 @@
     "0xce508465b243216fcf372d3146fd62e8f7a7b8e2|fill|502239385176943",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|386283994998523",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|876015135216629",
-    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|982901920865387"
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|982901920865387",
+    "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|229280123943596"
   ]
 }
