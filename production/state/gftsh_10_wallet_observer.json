@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792618998827,
+  "lastScanAt": 1792620741282,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9920,7 +9920,6 @@
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|XRP|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|UNI|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ENA|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AIXBT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PYTH|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WIF|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MANTA|SHORT",
@@ -9958,42 +9957,21 @@
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|LIT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|XMR|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|USELESS|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|USELESS|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AIXBT|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 36804,
+  "lastRuntimeMs": 32940,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
       "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
       "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "LIT",
-      "side": "LONG",
-      "entry": 3.882646,
-      "current": 3.91145,
-      "distancePct": 0.7418652125380488,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "XMR",
+      "coin": "AIXBT",
       "side": "SHORT",
-      "entry": 622.461,
-      "current": 622.69,
-      "distancePct": 0.03678945347580681,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "USELESS",
-      "side": "SHORT",
-      "entry": 0.172537,
-      "current": 0.173865,
-      "distancePct": 0.7696899795406178,
+      "entry": 0.020019,
+      "current": 0.02004,
+      "distancePct": 0.104900344672562,
       "fillTime": null
     }
   ],
