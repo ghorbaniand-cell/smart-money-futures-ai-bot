@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792554738179,
+  "lastScanAt": 1792556399646,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9939,7 +9939,6 @@
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ZEC|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|INJ|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENDLE|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PYTH|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|XMR|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|LONG",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|SUI|SHORT",
@@ -9960,26 +9959,60 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|XLM|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|XRP|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|UNI|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WIF|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MANTA|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ENA|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AIXBT|LONG",
-    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|BTC|SHORT"
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|BTC|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PYTH|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WIF|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MANTA|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 44518,
+  "lastRuntimeMs": 41285,
   "lastAlerts": [
     {
-      "alertType": "NEW_ENTRY",
-      "trader": "Trader 28",
-      "address": "0xde0e9b1a35322a809165d09f0490cca3fa7562e5",
-      "coin": "xyz:SKHX",
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "PYTH",
+      "side": "LONG",
+      "entry": 0.079319,
+      "current": 0.080078,
+      "distancePct": 0.9568955735700095,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "WIF",
       "side": "SHORT",
-      "entry": 971.4,
-      "current": 0,
-      "distancePct": null,
-      "fillTime": 1792554356204
+      "entry": 0.20605,
+      "current": 0.206365,
+      "distancePct": 0.15287551565153212,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "MANTA",
+      "side": "SHORT",
+      "entry": 0.06635,
+      "current": 0.06625,
+      "distancePct": 0.15071590052750994,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "PENGU",
+      "side": "SHORT",
+      "entry": 0.008019,
+      "current": 0.008024,
+      "distancePct": 0.062351914203763514,
+      "fillTime": null
     }
   ],
   "alertedNewEntryFillKeys": [
