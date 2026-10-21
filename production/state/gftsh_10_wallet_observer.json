@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792540447539,
+  "lastScanAt": 1792541912338,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9932,7 +9932,6 @@
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ONDO|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|XRP|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AIXBT|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WIF|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|NEAR|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|WLFI|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WLD|SHORT",
@@ -9964,20 +9963,43 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|VVV|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NEAR|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|SHORT",
-    "0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9|XMR|SHORT"
+    "0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9|XMR|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WIF|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 38629,
+  "lastRuntimeMs": 35470,
   "lastAlerts": [
     {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 2 ⭐",
-      "address": "0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9",
+      "alertType": "NEW_ENTRY",
+      "trader": "⭐ Trader 8 ⭐",
+      "address": "0xce508465b243216fcf372d3146fd62e8f7a7b8e2",
+      "coin": "BTC",
+      "side": "LONG",
+      "entry": 82922,
+      "current": 83117.5,
+      "distancePct": 0.23576372977014542,
+      "fillTime": 1792540864475
+    },
+    {
+      "alertType": "NEW_ENTRY",
+      "trader": "⭐ Trader 8 ⭐",
+      "address": "0xce508465b243216fcf372d3146fd62e8f7a7b8e2",
       "coin": "XMR",
+      "side": "LONG",
+      "entry": 598.47,
+      "current": 591.135,
+      "distancePct": 1.2256253446288095,
+      "fillTime": 1792540879471
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "WIF",
       "side": "SHORT",
-      "entry": 604.489,
-      "current": 602.89,
-      "distancePct": 0.26452094248200486,
+      "entry": 0.20605,
+      "current": 0.20588,
+      "distancePct": 0.08250424654210312,
       "fillTime": null
     }
   ],
@@ -10445,6 +10467,8 @@
     "0xe31501c472d557bfa145ce105d325fb2dd4cb867|fill|281805846856634",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|980355643195134",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|139419163880652",
-    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|497934053980060"
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|497934053980060",
+    "0xce508465b243216fcf372d3146fd62e8f7a7b8e2|fill|779755819313684",
+    "0xce508465b243216fcf372d3146fd62e8f7a7b8e2|fill|502239385176943"
   ]
 }
