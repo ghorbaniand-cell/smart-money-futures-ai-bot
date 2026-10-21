@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792599461761,
+  "lastScanAt": 1792601697299,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9964,64 +9964,8 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|GRAM|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 31352,
-  "lastAlerts": [
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 12 ⭐",
-      "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
-      "coin": "XPL",
-      "side": "LONG",
-      "entry": 0.082908,
-      "current": 0.082632,
-      "distancePct": 0.33289911709364417,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 12 ⭐",
-      "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
-      "coin": "ZEC",
-      "side": "SHORT",
-      "entry": 1338.8907,
-      "current": 1339.15,
-      "distancePct": 0.01936677878188015,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "PENGU",
-      "side": "LONG",
-      "entry": 0.008227,
-      "current": 0.008216,
-      "distancePct": 0.13370608970463832,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "ICP",
-      "side": "SHORT",
-      "entry": 2.97422,
-      "current": 2.97695,
-      "distancePct": 0.09178877150984531,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "GRAM",
-      "side": "SHORT",
-      "entry": 1.359243,
-      "current": 1.35945,
-      "distancePct": 0.015229065001627247,
-      "fillTime": null
-    }
-  ],
+  "lastRuntimeMs": 31315,
+  "lastAlerts": [],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
