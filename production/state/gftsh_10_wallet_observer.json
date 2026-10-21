@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792606989896,
+  "lastScanAt": 1792609648882,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9721,7 +9721,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEN|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SUSHI|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ETC|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|TAO|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|RENDER|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|S|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|TRUMP|LONG",
@@ -9938,11 +9937,9 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|KAITO|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKY|SHORT",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|HYPE|LONG",
-    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|PUMP|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|INJ|SHORT",
     "0xce508465b243216fcf372d3146fd62e8f7a7b8e2|XMR|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MINA|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|XMR|SHORT",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|STRK|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|WLFI|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|kPEPE|SHORT",
@@ -9960,53 +9957,55 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SPX|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|LIT|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|LIT|SHORT",
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|XMR|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 38843,
+  "lastRuntimeMs": 34679,
   "lastAlerts": [
     {
       "alertType": "NEW_ENTRY",
       "trader": "⭐ Trader 12 ⭐",
       "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
-      "coin": "xyz:HOOD",
+      "coin": "PUMP",
       "side": "LONG",
-      "entry": 102.69,
-      "current": 0,
-      "distancePct": null,
-      "fillTime": 1792606531223
+      "entry": 0.005145,
+      "current": 0.004997,
+      "distancePct": 2.8765792031098263,
+      "fillTime": 1792608894937
     },
     {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "PENGU",
-      "side": "LONG",
-      "entry": 0.008344,
-      "current": 0.008395,
-      "distancePct": 0.6112176414189713,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "SPX",
+      "alertType": "NEW_ENTRY",
+      "trader": "⭐ Trader 12 ⭐",
+      "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
+      "coin": "BTC",
       "side": "SHORT",
-      "entry": 0.39546,
-      "current": 0.39519,
-      "distancePct": 0.06827492034592436,
-      "fillTime": null
+      "entry": 84149,
+      "current": 84264.5,
+      "distancePct": 0.1372565330544629,
+      "fillTime": 1792609389615
     },
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
+      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
       "coin": "LIT",
       "side": "SHORT",
-      "entry": 3.850963,
-      "current": 3.83925,
-      "distancePct": 0.30415768731094805,
+      "entry": 3.814715,
+      "current": 3.85275,
+      "distancePct": 0.9970600687076182,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "XMR",
+      "side": "LONG",
+      "entry": 607.804,
+      "current": 608.09,
+      "distancePct": 0.04705464261506311,
       "fillTime": null
     }
   ],
@@ -10483,6 +10482,8 @@
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|229280123943596",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|674359194355128",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|258523925956966",
-    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|251587995541263"
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|251587995541263",
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|802450200142786",
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|253507793469999"
   ]
 }
