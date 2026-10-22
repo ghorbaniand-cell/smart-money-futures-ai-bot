@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792655417441,
+  "lastScanAt": 1792657450931,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9879,7 +9879,6 @@
     "0x3dd462347e7b42b5a3ea15132b677a4978af7a81|WLFI|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|VIRTUAL|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MEGA|SHORT",
-    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|WLD|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SYRUP|SHORT",
     "0x3dd462347e7b42b5a3ea15132b677a4978af7a81|ETH|SHORT",
     "0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9|ARB|LONG",
@@ -9962,20 +9961,33 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|XMR|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENDLE|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ENA|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT",
+    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|AVAX|LONG",
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|WLD|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 37669,
+  "lastRuntimeMs": 39119,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "ZEC",
-      "side": "SHORT",
-      "entry": 1267.3798,
-      "current": 1269.45,
-      "distancePct": 0.1633448789384298,
+      "trader": "⭐ Trader 7 ⭐",
+      "address": "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688",
+      "coin": "AVAX",
+      "side": "LONG",
+      "entry": 9.2368,
+      "current": 9.2062,
+      "distancePct": 0.33128356140654486,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
+      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
+      "coin": "WLD",
+      "side": "LONG",
+      "entry": 0.53768,
+      "current": 0.53828,
+      "distancePct": 0.11159053712243971,
       "fillTime": null
     }
   ],
