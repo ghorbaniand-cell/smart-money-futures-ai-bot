@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792691639829,
+  "lastScanAt": 1792693206144,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9802,7 +9802,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|kNEIRO|LONG",
     "0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a|PUMP|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ALT|LONG",
-    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|AERO|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|UNI|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|POPCAT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WCT|SHORT",
@@ -9962,31 +9961,32 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|BABY|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|GRAM|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|ZEC|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENDLE|LONG"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENDLE|LONG",
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|AERO|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 37889,
+  "lastRuntimeMs": 36370,
   "lastAlerts": [
     {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 21 ⭐ — PONS short candidate — profitable open short",
-      "address": "0xd4c1f7e8d876c4749228d515473d36f919583d1d",
-      "coin": "ZEC",
+      "alertType": "NEW_ENTRY",
+      "trader": "⭐ Trader 12 ⭐",
+      "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
+      "coin": "xyz:MRNA",
       "side": "LONG",
-      "entry": 1199.6948,
-      "current": 1194.85,
-      "distancePct": 0.4038360423000981,
-      "fillTime": null
+      "entry": 186.33,
+      "current": 0,
+      "distancePct": null,
+      "fillTime": 1792692812128
     },
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "PENDLE",
+      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
+      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
+      "coin": "AERO",
       "side": "LONG",
-      "entry": 2.0765,
-      "current": 2.06605,
-      "distancePct": 0.503250662171906,
+      "entry": 0.796336,
+      "current": 0.801815,
+      "distancePct": 0.68802615981194,
       "fillTime": null
     }
   ],
@@ -10479,6 +10479,7 @@
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|843484488650813",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|667413277237268",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|52928877207015",
-    "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|449793336772005"
+    "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|449793336772005",
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|317108204164954"
   ]
 }
