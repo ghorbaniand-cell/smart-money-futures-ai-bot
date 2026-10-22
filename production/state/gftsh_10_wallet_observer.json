@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792626005239,
+  "lastScanAt": 1792627447534,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9927,7 +9927,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|KAITO|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKY|SHORT",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|HYPE|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|INJ|SHORT",
     "0xce508465b243216fcf372d3146fd62e8f7a7b8e2|XMR|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MINA|LONG",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|STRK|LONG",
@@ -9945,7 +9944,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SPX|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|TAO|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|FET|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|TAO|SHORT",
@@ -9959,31 +9957,45 @@
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|LIT|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|USELESS|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|kPEPE|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|JUP|LONG"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|JUP|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|INJ|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MOODENG|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SPX|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 42608,
+  "lastRuntimeMs": 39782,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
       "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
       "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "kPEPE",
+      "coin": "INJ",
       "side": "LONG",
-      "entry": 0.00464,
-      "current": 0.004626,
-      "distancePct": 0.30172413793103714,
+      "entry": 8.60583,
+      "current": 8.63265,
+      "distancePct": 0.31164919595205504,
       "fillTime": null
     },
     {
       "alertType": "OPEN_BAND",
       "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
       "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "JUP",
+      "coin": "MOODENG",
       "side": "LONG",
-      "entry": 0.325871,
-      "current": 0.325875,
-      "distancePct": 0.0012274795854813716,
+      "entry": 0.042275,
+      "current": 0.042474,
+      "distancePct": 0.4707273802483685,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "SPX",
+      "side": "LONG",
+      "entry": 0.37834,
+      "current": 0.37929,
+      "distancePct": 0.2510968969709802,
       "fillTime": null
     }
   ],
