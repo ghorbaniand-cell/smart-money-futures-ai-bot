@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792629895957,
+  "lastScanAt": 1792632044821,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9960,21 +9960,33 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|INJ|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MOODENG|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SPX|LONG",
-    "0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a|XMR|SHORT"
+    "0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a|XMR|SHORT",
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|PUMP|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 30090,
+  "lastRuntimeMs": 29225,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 9 ⭐",
-      "address": "0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a",
-      "coin": "XMR",
+      "trader": "⭐ Trader 12 ⭐",
+      "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
+      "coin": "PUMP",
       "side": "SHORT",
-      "entry": 625.147,
-      "current": 622.1,
-      "distancePct": 0.48740536225880077,
+      "entry": 0.005145,
+      "current": 0.005182,
+      "distancePct": 0.7191448007774481,
       "fillTime": null
+    },
+    {
+      "alertType": "NEW_ENTRY",
+      "trader": "Trader 28",
+      "address": "0xde0e9b1a35322a809165d09f0490cca3fa7562e5",
+      "coin": "xyz:HYUNDAI",
+      "side": "SHORT",
+      "entry": 229.77,
+      "current": 0,
+      "distancePct": null,
+      "fillTime": 1792631183700
     }
   ],
   "alertedNewEntryFillKeys": [
@@ -10455,6 +10467,7 @@
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|253507793469999",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|455161633057516",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|1085726874188045",
-    "0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0|fill|347257572900582"
+    "0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0|fill|347257572900582",
+    "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|654338575565366"
   ]
 }
