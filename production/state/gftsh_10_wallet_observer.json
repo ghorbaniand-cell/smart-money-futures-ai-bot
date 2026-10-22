@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792672069364,
+  "lastScanAt": 1792675129162,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9961,11 +9961,46 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NEAR|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|0G|LONG",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|PUMP|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NEO|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 32431,
-  "lastAlerts": [],
+  "lastRuntimeMs": 29315,
+  "lastAlerts": [
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "NEO",
+      "side": "LONG",
+      "entry": 2.2141,
+      "current": 2.2081,
+      "distancePct": 0.270990470168476,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "ZEC",
+      "side": "LONG",
+      "entry": 1237.0212,
+      "current": 1237.05,
+      "distancePct": 0.0023281735187761186,
+      "fillTime": null
+    },
+    {
+      "alertType": "NEW_ENTRY",
+      "trader": "Trader 28",
+      "address": "0xde0e9b1a35322a809165d09f0490cca3fa7562e5",
+      "coin": "xyz:JP225",
+      "side": "SHORT",
+      "entry": 63258,
+      "current": 0,
+      "distancePct": null,
+      "fillTime": 1792674467057
+    }
+  ],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
@@ -10450,6 +10485,7 @@
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|463193773948433",
     "0x736850ee773ac6170fcaeda596514269b863ee56|fill|1093976790513164",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|508307877694816",
-    "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|434496469285169"
+    "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|434496469285169",
+    "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|22475944560862"
   ]
 }
