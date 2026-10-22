@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792652925010,
+  "lastScanAt": 1792655417441,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9933,7 +9933,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|GRAM|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ASTER|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|TAO|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|FET|SHORT",
@@ -9962,31 +9961,21 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|LDO|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|XMR|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENDLE|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ENA|LONG"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ENA|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 31037,
+  "lastRuntimeMs": 37669,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
       "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
       "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "PENDLE",
-      "side": "LONG",
-      "entry": 2.109341,
-      "current": 2.10305,
-      "distancePct": 0.29824480726445113,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "ENA",
-      "side": "LONG",
-      "entry": 0.19965,
-      "current": 0.19889,
-      "distancePct": 0.3806661657901242,
+      "coin": "ZEC",
+      "side": "SHORT",
+      "entry": 1267.3798,
+      "current": 1269.45,
+      "distancePct": 0.1633448789384298,
       "fillTime": null
     }
   ],
