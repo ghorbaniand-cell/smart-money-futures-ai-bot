@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792757452916,
+  "lastScanAt": 1792759932945,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9961,53 +9961,32 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WCT|LONG",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ZEC|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|ZEC|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WLD|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WLD|SHORT",
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|STRK|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 30241,
+  "lastRuntimeMs": 41130,
   "lastAlerts": [
     {
       "alertType": "NEW_ENTRY",
       "trader": "⭐ Trader 12 ⭐",
       "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
+      "coin": "kPEPE",
+      "side": "SHORT",
+      "entry": 0.005079,
+      "current": 0.005046,
+      "distancePct": 0.6497341996456004,
+      "fillTime": 1792759289237
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 12 ⭐",
+      "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
       "coin": "STRK",
       "side": "LONG",
-      "entry": 0.05288,
-      "current": 0.05292,
-      "distancePct": 0.07564296520423291,
-      "fillTime": 1792757427536
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
-      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
-      "coin": "ZEC",
-      "side": "SHORT",
-      "entry": 1224.6021,
-      "current": 1222.45,
-      "distancePct": 0.1757387154570467,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 21 ⭐ — PONS short candidate — profitable open short",
-      "address": "0xd4c1f7e8d876c4749228d515473d36f919583d1d",
-      "coin": "ZEC",
-      "side": "SHORT",
-      "entry": 1231.5574,
-      "current": 1222.45,
-      "distancePct": 0.7395026817263954,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "WLD",
-      "side": "SHORT",
-      "entry": 0.54048,
-      "current": 0.53887,
-      "distancePct": 0.29788336293664897,
+      "entry": 0.05319,
+      "current": 0.05274,
+      "distancePct": 0.8460236886632807,
       "fillTime": null
     }
   ],
@@ -10516,6 +10495,7 @@
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|55724652653727",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|914565448368717",
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|507203610854413",
-    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|826483976465896"
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|826483976465896",
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|349573501716484"
   ]
 }
