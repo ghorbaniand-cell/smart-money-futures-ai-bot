@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792712466484,
+  "lastScanAt": 1792713855646,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9804,7 +9804,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ALT|LONG",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|UNI|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|POPCAT|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WCT|SHORT",
     "0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a|SOL|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|GOAT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AERO|SHORT",
@@ -9898,7 +9897,6 @@
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|CASHCAT|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NIL|LONG",
     "0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9|XMR|SHORT",
-    "0xce508465b243216fcf372d3146fd62e8f7a7b8e2|BTC|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|XRP|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|UNI|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PYTH|LONG",
@@ -9909,7 +9907,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|KAITO|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKY|SHORT",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|HYPE|LONG",
-    "0xce508465b243216fcf372d3146fd62e8f7a7b8e2|XMR|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MINA|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|WLFI|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|USUAL|SHORT",
@@ -9962,12 +9959,47 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WLD|LONG",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|HYPE|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|LIT|SHORT",
-    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|AERO|SHORT"
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|AERO|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WCT|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|LIT|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 39144,
-  "lastAlerts": [],
+  "lastRuntimeMs": 33320,
+  "lastAlerts": [
+    {
+      "alertType": "NEW_ENTRY",
+      "trader": "⭐ Trader 12 ⭐",
+      "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
+      "coin": "xyz:SMSN",
+      "side": "LONG",
+      "entry": 155.86,
+      "current": 0,
+      "distancePct": null,
+      "fillTime": 1792713220067
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "WCT",
+      "side": "LONG",
+      "entry": 0.03456,
+      "current": 0.034554,
+      "distancePct": 0.017361111111108395,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "LIT",
+      "side": "LONG",
+      "entry": 3.386831,
+      "current": 3.39195,
+      "distancePct": 0.15114424073714028,
+      "fillTime": null
+    }
+  ],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
@@ -10466,6 +10498,7 @@
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|727475428259344",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|685717929962178",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|1049734924782398",
-    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|953929514208058"
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|953929514208058",
+    "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|889517950818807"
   ]
 }
