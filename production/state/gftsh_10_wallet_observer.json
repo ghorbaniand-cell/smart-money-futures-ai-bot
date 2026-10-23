@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792775596324,
+  "lastScanAt": 1792777479926,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9671,7 +9671,6 @@
     "0xfdbaa5eee7cdf45eec3a71a672065a67191fda7a|NEAR|SHORT",
     "0xe2823659be02e0f48a4660e4da008b5e1abfdf29|ETH|LONG",
     "0x767f6dcea7e1d520a3b7ac251b30178a79eb2ab0|PONS|SHORT",
-    "0x3dd462347e7b42b5a3ea15132b677a4978af7a81|BTC|SHORT",
     "0x68a82030ee49af0dd0d1880da1aa18e0e97f003c|NEAR|SHORT",
     "0x68a82030ee49af0dd0d1880da1aa18e0e97f003c|HYPE|SHORT",
     "0x69443708e5135532d435b7d1a3b7e6bdc481a800|SOL|LONG",
@@ -9787,12 +9786,10 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WLFI|LONG",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|MORPHO|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PONS|LONG",
-    "0x3dd462347e7b42b5a3ea15132b677a4978af7a81|HYPE|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PEOPLE|LONG",
     "0x53f8f390fd4f70941c5d160a964f6893c8dbceff|ETH|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|EIGEN|SHORT",
     "0x8bae3527e5a33fa0cf184f37bc112d071463ab6d|kNEIRO|LONG",
-    "0x3dd462347e7b42b5a3ea15132b677a4978af7a81|XRP|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LINK|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|KAITO|LONG",
     "0x8af700ba841f30e0a3fcb0ee4c4a9d223e1efa05|CRV|SHORT",
@@ -9955,18 +9952,30 @@
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|STRK|LONG",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|kPEPE|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|kBONK|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WLD|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|MON|LONG",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ENA|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|RENDER|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MELANIA|LONG"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MELANIA|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 34690,
-  "lastAlerts": [],
+  "lastRuntimeMs": 29781,
+  "lastAlerts": [
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "AVNT",
+      "side": "SHORT",
+      "entry": 0.11342,
+      "current": 0.113585,
+      "distancePct": 0.14547698818550386,
+      "fillTime": null
+    }
+  ],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
