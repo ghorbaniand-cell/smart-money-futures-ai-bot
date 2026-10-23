@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792753844459,
+  "lastScanAt": 1792755857849,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9964,31 +9964,8 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WCT|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 29806,
-  "lastAlerts": [
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "WCT",
-      "side": "LONG",
-      "entry": 0.036,
-      "current": 0.035897,
-      "distancePct": 0.28611111111110815,
-      "fillTime": null
-    },
-    {
-      "alertType": "NEW_ENTRY",
-      "trader": "Trader 28",
-      "address": "0xde0e9b1a35322a809165d09f0490cca3fa7562e5",
-      "coin": "xyz:JP225",
-      "side": "SHORT",
-      "entry": 62355,
-      "current": 0,
-      "distancePct": null,
-      "fillTime": 1792753654999
-    }
-  ],
+  "lastRuntimeMs": 39339,
+  "lastAlerts": [],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
