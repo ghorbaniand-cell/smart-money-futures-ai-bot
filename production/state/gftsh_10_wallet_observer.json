@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792767192791,
+  "lastScanAt": 1792769020447,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9961,31 +9961,33 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WLD|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|MON|LONG",
-    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|SHORT"
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ENA|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|RENDER|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 32946,
+  "lastRuntimeMs": 31866,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
-      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
-      "coin": "MON",
-      "side": "LONG",
-      "entry": 0.021928,
-      "current": 0.022005,
-      "distancePct": 0.3511492156147422,
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "ENA",
+      "side": "SHORT",
+      "entry": 0.204185,
+      "current": 0.203935,
+      "distancePct": 0.1224379851605163,
       "fillTime": null
     },
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
-      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
-      "coin": "LIT",
-      "side": "SHORT",
-      "entry": 3.378118,
-      "current": 3.39305,
-      "distancePct": 0.4420212674631243,
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "RENDER",
+      "side": "LONG",
+      "entry": 1.75738,
+      "current": 1.76395,
+      "distancePct": 0.37385198420375587,
       "fillTime": null
     }
   ],
