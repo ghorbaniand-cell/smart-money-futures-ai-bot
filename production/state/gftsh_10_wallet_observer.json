@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792793739406,
+  "lastScanAt": 1792795708394,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9879,7 +9879,6 @@
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ETH|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|NEAR|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ENA|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|UMA|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|REZ|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|SOL|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|ENA|SHORT",
@@ -9940,13 +9939,10 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|DYDX|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AIXBT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WCT|LONG",
-    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ZEC|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|ZEC|SHORT",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|kPEPE|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|kBONK|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|MON|LONG",
-    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ENA|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|RENDER|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MELANIA|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|UNI|LONG",
@@ -9959,11 +9955,58 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MON|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKR|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKR|SHORT",
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|UMA|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 31934,
-  "lastAlerts": [],
+  "lastRuntimeMs": 33370,
+  "lastAlerts": [
+    {
+      "alertType": "NEW_ENTRY",
+      "trader": "⭐ Trader 7 ⭐",
+      "address": "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688",
+      "coin": "ZRO",
+      "side": "LONG",
+      "entry": 1.7132,
+      "current": 1.70795,
+      "distancePct": 0.3064440812514579,
+      "fillTime": 1792794814288
+    },
+    {
+      "alertType": "NEW_ENTRY",
+      "trader": "⭐ Trader 7 ⭐",
+      "address": "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688",
+      "coin": "PONS",
+      "side": "LONG",
+      "entry": 0.24167,
+      "current": 0.238645,
+      "distancePct": 1.2517068730086482,
+      "fillTime": 1792794817524
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
+      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
+      "coin": "LIT",
+      "side": "LONG",
+      "entry": 3.166593,
+      "current": 3.15145,
+      "distancePct": 0.478211124700905,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "UMA",
+      "side": "SHORT",
+      "entry": 0.36566,
+      "current": 0.36498,
+      "distancePct": 0.1859651041951426,
+      "fillTime": null
+    }
+  ],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
@@ -10471,6 +10514,8 @@
     "0xde0e9b1a35322a809165d09f0490cca3fa7562e5|fill|507203610854413",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|826483976465896",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|349573501716484",
-    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|fill|506018215788498"
+    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|fill|506018215788498",
+    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|fill|338380463122370",
+    "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|fill|646270863903452"
   ]
 }
