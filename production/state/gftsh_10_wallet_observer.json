@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792739482132,
+  "lastScanAt": 1792741915676,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9913,7 +9913,6 @@
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|W|SHORT",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|ZEC|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ASTER|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|TAO|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|FET|SHORT",
@@ -9962,20 +9961,21 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|LIT|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|DYDX|SHORT",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|STRK|LONG",
-    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|AERO|SHORT"
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|AERO|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 39480,
+  "lastRuntimeMs": 31691,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
-      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
-      "coin": "AERO",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "AVNT",
       "side": "SHORT",
-      "entry": 0.795251,
-      "current": 0.795455,
-      "distancePct": 0.025652278337277405,
+      "entry": 0.1089,
+      "current": 0.1089,
+      "distancePct": 0,
       "fillTime": null
     }
   ],
