@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792863964231,
+  "lastScanAt": 1792865213863,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9960,20 +9960,21 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|BANANA|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PENGU|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NXPC|LONG",
-    "0xd4c1f7e8d876c4749228d515473d36f919583d1d|LIT|SHORT"
+    "0xd4c1f7e8d876c4749228d515473d36f919583d1d|LIT|SHORT",
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|SHORT"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 43377,
+  "lastRuntimeMs": 36407,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 21 ⭐ — PONS short candidate — profitable open short",
-      "address": "0xd4c1f7e8d876c4749228d515473d36f919583d1d",
+      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
+      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
       "coin": "LIT",
       "side": "SHORT",
-      "entry": 3.141538,
-      "current": 3.1235,
-      "distancePct": 0.5741773615343891,
+      "entry": 3.126086,
+      "current": 3.1279,
+      "distancePct": 0.0580278341670697,
       "fillTime": null
     }
   ],
