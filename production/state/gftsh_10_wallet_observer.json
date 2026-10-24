@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792843361088,
+  "lastScanAt": 1792845389172,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9846,7 +9846,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|CRV|SHORT",
     "0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9|SOL|LONG",
     "0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9|XRP|LONG",
-    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ZRO|SHORT",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|WLD|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|TURBO|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|KAS|SHORT",
@@ -9956,11 +9955,35 @@
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|LINK|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NIL|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ALT|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKR|SHORT"
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ZRO|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKR|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 29937,
-  "lastAlerts": [],
+  "lastRuntimeMs": 33199,
+  "lastAlerts": [
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
+      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
+      "coin": "ZRO",
+      "side": "LONG",
+      "entry": 1.67812,
+      "current": 1.67325,
+      "distancePct": 0.2902057063857264,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "SKR",
+      "side": "LONG",
+      "entry": 0.014837,
+      "current": 0.014829,
+      "distancePct": 0.05391925591426385,
+      "fillTime": null
+    }
+  ],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
