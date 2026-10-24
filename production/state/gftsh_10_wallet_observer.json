@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792814880509,
+  "lastScanAt": 1792816615364,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9884,7 +9884,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|PNUT|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZORA|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|KAITO|SHORT",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKY|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MINA|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|WLFI|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|USUAL|SHORT",
@@ -9960,11 +9959,36 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ETHFI|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ICP|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|POLYX|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MOODENG|LONG"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MOODENG|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ALT|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKY|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 33136,
-  "lastAlerts": [],
+  "lastRuntimeMs": 32735,
+  "lastAlerts": [
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "ALT",
+      "side": "SHORT",
+      "entry": 0.007174,
+      "current": 0.007245,
+      "distancePct": 0.9896849735154709,
+      "fillTime": null
+    },
+    {
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "SKY",
+      "side": "LONG",
+      "entry": 0.071131,
+      "current": 0.071145,
+      "distancePct": 0.01968199519196992,
+      "fillTime": null
+    }
+  ],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
