@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792849483457,
+  "lastScanAt": 1792850899381,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9960,75 +9960,8 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|CHIP|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 28876,
-  "lastAlerts": [
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 12 ⭐",
-      "address": "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b",
-      "coin": "MORPHO",
-      "side": "LONG",
-      "entry": 2.16808,
-      "current": 2.18955,
-      "distancePct": 0.9902771115457143,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
-      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
-      "coin": "WLD",
-      "side": "LONG",
-      "entry": 0.46529,
-      "current": 0.46685,
-      "distancePct": 0.33527477487158674,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
-      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
-      "coin": "ENA",
-      "side": "LONG",
-      "entry": 0.187941,
-      "current": 0.18841,
-      "distancePct": 0.2495464002000613,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "MOODENG",
-      "side": "SHORT",
-      "entry": 0.040838,
-      "current": 0.040688,
-      "distancePct": 0.3673049610656677,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "AERO",
-      "side": "LONG",
-      "entry": 0.700424,
-      "current": 0.700375,
-      "distancePct": 0.00699576256668486,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "CHIP",
-      "side": "LONG",
-      "entry": 0.04229,
-      "current": 0.042317,
-      "distancePct": 0.06384488058642528,
-      "fillTime": null
-    }
-  ],
+  "lastRuntimeMs": 31217,
+  "lastAlerts": [],
   "alertedNewEntryFillKeys": [
     "0x95da8596c44dd09f4b8becce87ad3b7894fb2328|563333162858890",
     "0xe67f141977da22e5c34d15c19b35f180a1532715|747156716600254",
