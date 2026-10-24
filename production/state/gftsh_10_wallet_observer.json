@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792805311162,
+  "lastScanAt": 1792807599165,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9936,7 +9936,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|RENDER|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MELANIA|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|UNI|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|POLYX|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|AERO|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|WLD|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|AVNT|SHORT",
@@ -9960,42 +9959,33 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|DASH|LONG",
     "0xd4c1f7e8d876c4749228d515473d36f919583d1d|ONDO|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ETHFI|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ICP|SHORT"
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ICP|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|POLYX|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MOODENG|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 31632,
+  "lastRuntimeMs": 29681,
   "lastAlerts": [
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 21 ⭐ — PONS short candidate — profitable open short",
-      "address": "0xd4c1f7e8d876c4749228d515473d36f919583d1d",
-      "coin": "ONDO",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "POLYX",
       "side": "LONG",
-      "entry": 0.412972,
-      "current": 0.414,
-      "distancePct": 0.24892728804857797,
+      "entry": 0.034638,
+      "current": 0.034594,
+      "distancePct": 0.12702811940643907,
       "fillTime": null
     },
     {
       "alertType": "OPEN_BAND",
       "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
       "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "ETHFI",
+      "coin": "MOODENG",
       "side": "LONG",
-      "entry": 0.64603,
-      "current": 0.64274,
-      "distancePct": 0.5092642756528358,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "ICP",
-      "side": "SHORT",
-      "entry": 2.72421,
-      "current": 2.7295,
-      "distancePct": 0.19418473612533604,
+      "entry": 0.040058,
+      "current": 0.040194,
+      "distancePct": 0.33950771381496136,
       "fillTime": null
     }
   ],
