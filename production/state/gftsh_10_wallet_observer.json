@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792860917152,
+  "lastScanAt": 1792862285287,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9964,40 +9964,18 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NXPC|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 35686,
+  "lastRuntimeMs": 35239,
   "lastAlerts": [
     {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "BANANA",
+      "alertType": "NEW_ENTRY",
+      "trader": "⭐ Trader 13 ⭐",
+      "address": "0xf179326c91d7233ae833d668c5d44c6a7d472161",
+      "coin": "ETH",
       "side": "LONG",
-      "entry": 3.33133,
-      "current": 3.30675,
-      "distancePct": 0.7378434439097845,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "PENGU",
-      "side": "SHORT",
-      "entry": 0.007433,
-      "current": 0.007485,
-      "distancePct": 0.699582940939055,
-      "fillTime": null
-    },
-    {
-      "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
-      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
-      "coin": "NXPC",
-      "side": "LONG",
-      "entry": 0.171486,
-      "current": 0.171405,
-      "distancePct": 0.04723417655085415,
-      "fillTime": null
+      "entry": 2320.2,
+      "current": 2320.15,
+      "distancePct": 0.002154986639071078,
+      "fillTime": 1792862282087
     }
   ],
   "alertedNewEntryFillKeys": [
@@ -10515,6 +10493,7 @@
     "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|fill|452815041664759",
     "0x0c1f6941fdcde9488dfd36ca16fed6b3bc49672b|fill|270329654777541",
     "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688|fill|285060047221653",
-    "0xf179326c91d7233ae833d668c5d44c6a7d472161|fill|847536385603886"
+    "0xf179326c91d7233ae833d668c5d44c6a7d472161|fill|847536385603886",
+    "0xf179326c91d7233ae833d668c5d44c6a7d472161|fill|696753527914781"
   ]
 }
