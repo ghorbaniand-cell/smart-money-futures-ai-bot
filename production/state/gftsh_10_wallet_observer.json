@@ -1,7 +1,7 @@
 {
   "version": "GFTSH-27W-LIVE-OBSERVER-V3.27.1-REMOVE-TRADER6-24H-30D-SEPARATE-RANKINGS",
   "initialized": true,
-  "lastScanAt": 1792828334177,
+  "lastScanAt": 1792829693932,
   "wallets": {
     "0x885989fd94d30c150e6eaf897090509bce4f6aa8": {
       "trader": "Trader #1",
@@ -9939,7 +9939,6 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|NXPC|SHORT",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ZEC|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MON|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKR|SHORT",
     "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|LIT|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|UMA|SHORT",
     "0x909eb3d5ff0ac0df12c81f8495860cfccf1e7ea9|ETH|LONG",
@@ -9959,32 +9958,33 @@
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|POLYX|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|MOODENG|LONG",
     "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKY|LONG",
-    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ALT|LONG",
-    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ONDO|LONG"
+    "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f|ONDO|LONG",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|ALT|SHORT",
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e|SKR|LONG"
   ],
   "alertStateVersion": 2,
-  "lastRuntimeMs": 33803,
+  "lastRuntimeMs": 36041,
   "lastAlerts": [
     {
-      "alertType": "NEW_ENTRY",
-      "trader": "⭐ Trader 7 ⭐",
-      "address": "0xc0b2a1ce425d0cd8bc321c445fa6ae0eaed2e688",
-      "coin": "ONDO",
-      "side": "LONG",
-      "entry": 0.40862,
-      "current": 0.408835,
-      "distancePct": 0.052616122558861715,
-      "fillTime": 1792828138894
+      "alertType": "OPEN_BAND",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "ALT",
+      "side": "SHORT",
+      "entry": 0.007091,
+      "current": 0.007073,
+      "distancePct": 0.25384289945000404,
+      "fillTime": null
     },
     {
       "alertType": "OPEN_BAND",
-      "trader": "⭐ Trader 20 ⭐ — PONS short candidate — large open short; reported PONS realized PnL",
-      "address": "0x936cf4fb95c30ce83f658b5bbb247e4bb381bb0f",
-      "coin": "ONDO",
+      "trader": "⭐ Trader 23 ⭐ — STRK short candidate — profitable open short",
+      "address": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "coin": "SKR",
       "side": "LONG",
-      "entry": 0.408684,
-      "current": 0.408835,
-      "distancePct": 0.03694786191776831,
+      "entry": 0.015203,
+      "current": 0.015243,
+      "distancePct": 0.26310596592777813,
       "fillTime": null
     }
   ],
